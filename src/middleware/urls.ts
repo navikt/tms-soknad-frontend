@@ -1,10 +1,10 @@
-import { getEnvironment } from "@src/utils/server/urls.ts";
+import { getEnvironment } from "@src/utils/server/urls";
 
 const REDIRECT_URI = {
-  local: "http://localhost:4321/tms-astro-template",
-  development: "https://www.ansatt.dev.nav.no/tms-astro-template",
-  production: "https://www.nav.no/minside/tms-astro-template",
+  local: "http://localhost:4321/minside/soknad",
+  development: "https://www.ansatt.dev.nav.no/minside/soknad",
+  production: "https://www.nav.no/minside/soknad",
 };
 
 export const redirectUri = REDIRECT_URI[getEnvironment()];
-export const loginUrl = `/tms-astro-template/oauth2/login?redirect=${redirectUri}`;
+export const loginUrl = `/minside/soknad/oauth2/login?redirect=${redirectUri}`;

@@ -2,7 +2,7 @@ import { requestOboToken } from "@navikt/oasis";
 import { isLocal } from "@src/utils/server/environment.ts";
 import { generateKeyPair, SignJWT } from 'jose';
 
-const audience = `${process.env.NAIS_CLUSTER_NAME}:min-side:example-api`;
+const audience = `${process.env.NAIS_CLUSTER_NAME}:min-side:tms-soknad-api`;
 
 export const getOboToken = async (token: string): Promise<string> => {
     const oboResult = await requestOboToken(token, audience);
@@ -24,6 +24,7 @@ const alg = 'RS256';
 const cachedKeyPair = generateKeyPair(alg);
 const privateKey = async () => (await cachedKeyPair).privateKey;
 
+// TODO: document this
 export const localToken = async ({
   audience = 'default_audience',
   issuer = 'default_issuer',

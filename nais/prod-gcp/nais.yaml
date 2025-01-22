@@ -1,7 +1,7 @@
 apiVersion: "nais.io/v1alpha1"
 kind: "Application"
 metadata:
-  name: tms-astro-template
+  name: tms-soknad-frontend
   namespace: min-side
   labels:
     team: min-side
@@ -10,16 +10,16 @@ spec:
     enabled: true
     sidecar:
       enabled: true
-      level: Level3
+      level: Level4
   tokenx:
     enabled: true
   image: {{ image }}
   port: 3000
   liveness:
-    path: /tms-astro-template/api/internal/isAlive
+    path: /minside/soknad/api/internal/isAlive
     initialDelay: 10
   readiness:
-    path: /tms-astro-template/api/internal/isReady
+    path: /minside/soknad/api/internal/isReady
     initialDelay: 10
   replicas:
     min: 2
@@ -30,7 +30,7 @@ spec:
         - application: nav-dekoratoren
           namespace: personbruker
   ingresses:
-    - "https://www.nav.no/tms-astro-template"
+    - "https://www.nav.no/minside/soknad"
   resources:
     limits:
       memory: 768Mi
