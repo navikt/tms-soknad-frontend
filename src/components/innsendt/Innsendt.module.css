@@ -1,0 +1,18 @@
+.tittel {
+    display: flex;
+    gap: 0.25rem;
+    align-content: center;
+    padding-left: 1rem;
+    margin-top: 0.2rem;
+}
+
+.soknad {
+    margin-top: 1rem;
+    padding-bottom: 1.5rem;
+}
+
+ul {
+   list-style: none;
+    padding-left: 0;
+    margin: 0;
+}

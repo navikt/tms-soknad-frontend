@@ -1,7 +1,5 @@
 ---
-import { text } from "../language/text";
 import Layout from "../layouts/Layout.astro";
-import { Heading } from "@navikt/ds-react";
 import type { Language } from "../language/language";
 import Soknad from "@src/components/soknad/Soknad.astro";
 
@@ -9,12 +7,5 @@ const language = Astro.currentLocale as Language;
 ---
 
 <Layout>
-    <div>
-        <div>
-            <Heading size={"large"}>
-                {text.title[language]}
-            </Heading>
-        </div>
-    </div>
     <Soknad server:defer />
 </Layout>

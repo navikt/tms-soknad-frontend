@@ -4,8 +4,7 @@ import type { Language } from "@src/language/language";
 import Innsendt from "../innsendt/Innsendt";
 import Manglende from "../manglende/Manglende.tsx";
 import type { Data } from "./SoknadType";
-import { text } from "@src/language/text";
-import { BodyShort, Heading } from "@navikt/ds-react";
+import { Heading } from "@navikt/ds-react";
 
 const { soknad, manglendeVedlegg }: Data = await fetch(exampleApiUrl)
   .then((response) => response.json())
