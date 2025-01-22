@@ -1,5 +1,6 @@
 {
-	"kvittering": {
+	"soknad": {
+    "soknadsId": "String",
 		"tittel": "String",
 		"tidspunkt": "ZonedDateTime",
 		"ettersendingsfrist": "ZonedDate",

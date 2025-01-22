@@ -1,0 +1,18 @@
+---
+import { exampleApiUrl } from "@src/utils/server/urls";
+import type { Language } from "@src/language/language";
+import Innsendt from "../innsendt/Innsendt";
+import Manglende from "../manglende/Manglende.tsx";
+import type { Data } from "./SoknadType";
+import { text } from "@src/language/text";
+import { BodyShort, Heading } from "@navikt/ds-react";
+
+const { soknad, manglendeVedlegg }: Data = await fetch(exampleApiUrl)
+  .then((response) => response.json())
+  .then((data) => data);
+
+const language = Astro.currentLocale as Language;
+---
+<Heading level="1" size="large">{soknad.tittel}</Heading>
+<Innsendt client:only="react" soknad={soknad}/>
+<Manglende client:only="react" manglendeVedlegg={manglendeVedlegg}/>

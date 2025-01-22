@@ -1,7 +1,7 @@
 import { Hono } from "hono";
 import { serve } from "@hono/node-server";
 import { cors } from "hono/cors";
-import example from "./data/example.json";
+import soknad from "./data/soknad.json" with { type: "json" };
 
 const api = new Hono();
 
@@ -13,7 +13,7 @@ api.use("/*", cors({
 }));
 
 api.get('/api/something', (c) => {
-  return c.json(example);
+  return c.json(soknad);
 });
 
 

@@ -1,0 +1,29 @@
+{
+	"soknad": {
+    "soknadsId": "12345",
+		"tittel": "Søknad om førerhund",
+		"tidspunkt": "2024-12-10T08:27:01Z",
+		"ettersendingsfrist": "2025-02-07T08:27:01Z",
+		"url": "https://www.ansatt.nav.no/minside",
+		"vedlegg": {
+			"url": "https://www.ansatt.nav.no/minside",
+			"titler": ["Vedlegg til søknad om førerhund 1", "Vedlegg til søknad om førerhund 2"]
+		},
+		"ettersendte": [
+			{
+				"tittel": "String",
+				"url": "String",
+				"tidspunkt": "2024-12-11T08:27:01Z"
+			}
+		]
+
+	},
+	"manglendeVedlegg": [
+		{
+			"type": "String",
+			"tittel": "Vedlegg til søknad om førerhund 3",
+			"url": "https://www.ansatt.nav.no/minside",
+			"beskrivelse": "String?"
+		}
+	]
+}
