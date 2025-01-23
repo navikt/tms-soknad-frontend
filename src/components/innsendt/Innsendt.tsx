@@ -41,11 +41,11 @@ const Innsendt = ({ soknad }: Props) => {
                         <BodyShort>
                         {tittel}
                         </BodyShort>
-                    </Link>
+                    </Link>±±±±±
                   </li>
               )
           })}
-          </ul>
+          </ul>±
       </ExpansionCard.Content>
     </ExpansionCard>
   );

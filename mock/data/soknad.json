@@ -20,10 +20,28 @@
 	},
 	"manglendeVedlegg": [
 		{
-			"type": "String",
+			"type": "deg",
 			"tittel": "Vedlegg til søknad om førerhund 3",
 			"url": "https://www.ansatt.nav.no/minside",
 			"beskrivelse": "String?"
+		},
+		{
+			"type": "deg",
+			"tittel": "Vedlegg til søknad om førerhund 6",
+			"url": "https://www.ansatt.nav.no/minside",
+			"beskrivelse": "String?"
+		},
+		{
+			"type": "andre",
+			"tittel": "Vedlegg til søknad om førerhund 4",
+			"url": null,
+			"beskrivelse": "Legen din må sende inn dokumentasjon"
+		},
+		{
+			"type": "andre",
+			"tittel": "Vedlegg til søknad om førerhund 5",
+			"url": null,
+			"beskrivelse": "Legen din må sende inn dokumentasjon"
 		}
 	]
 }
