@@ -12,6 +12,7 @@ const { soknad, manglendeVedlegg }: Data = await fetch(exampleApiUrl)
   .then((data) => data);
 
 const language = Astro.currentLocale as Language;
+// TODO: setup language support
 ---
 
 <div class={styles.container}>
