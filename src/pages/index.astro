@@ -1,11 +1,11 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import type { Language } from "../language/language";
-import Soknad from "@src/components/soknad/Soknad.astro";
+import Layout from '../layouts/Layout.astro';
+import type { Language } from '../language/language';
+import Soknad from '@src/components/soknad/Soknad.astro';
 
 const language = Astro.currentLocale as Language;
 ---
 
 <Layout>
-    <Soknad server:defer />
+  <Soknad server:defer />
 </Layout>
