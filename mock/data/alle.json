@@ -32,7 +32,8 @@
         "brukerErAvsender":false,
         "tittel":"Vedlegg som bruker sier tredjepart sender inn",
         "beskrivelse":"Eventuell detaljert beskrivelse av vedlegg som er etterspurt",
-        "linkEttersending":null,"tidspunktEtterspurt":"2025-02-11T14:26:16.8983869Z"
+        "linkEttersending":null,
+        "tidspunktEtterspurt":"2025-02-11T14:26:16.8983869Z"
       },
       {
         "vedleggsId":"vedlegg-4",
