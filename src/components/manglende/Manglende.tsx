@@ -70,3 +70,4 @@ const Manglende = ({ manglendeVedlegg, ettersendingsfrist }: Props) => {
 };
 
 export default Manglende;
+
