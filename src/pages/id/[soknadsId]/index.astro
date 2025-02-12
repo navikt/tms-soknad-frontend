@@ -6,10 +6,9 @@ import { getSoknadUrl } from "@src/utils/server/urls";
 
 
 const { soknadsId } = Astro.params;
-const soknadsUrl = soknadsId && getSoknadUrl(soknadsId);
 const language = Astro.currentLocale as Language;
 ---
 
 <Layout>
-  <Soknad server:defer soknadsUrl={soknadsUrl}/>
+  <Soknad server:defer soknadsId={soknadsId}/>
 </Layout>

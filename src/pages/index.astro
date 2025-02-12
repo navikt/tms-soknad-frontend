@@ -1,14 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import type { Language } from '../language/language';
-import { getAlleSoknaderUrl } from '@src/utils/server/urls';
-import type { SoknadsData } from "@src/components/soknad/SoknadType";
+import type { SoknadsObject } from "@src/components/soknad/SoknadType";
 import AlleSoknader from "@src/components/alle-soknader/AlleSoknader.tsx"
-import { Link } from '@navikt/ds-react';
+import { fetchAlleSoknader } from '@src/utils/server/fetchAlleSoknader';
 
-const soknader: SoknadsData[] = await fetch(getAlleSoknaderUrl)
-  .then((response) => response.json())
-  .then((data) => data);
+let soknader: SoknadsObject[] | null = null;
+let soknadsFetchError: boolean = false;
+
+try {
+  soknader = await fetchAlleSoknader(Astro.locals.token);
+} catch (error: any) {
+  console.log(error)
+  console.error('Fetch failed.', error.message);
+  soknadsFetchError = true;
+}
 
 const language = Astro.currentLocale as Language;
 ---

@@ -3,10 +3,14 @@ import type { SoknadsObject } from "../soknad/SoknadType"
 import { enkeltSoknadUrl } from "@src/utils/server/urls"
 
 interface Props {
-  soknader: SoknadsObject[];
+  soknader: SoknadsObject[] | null;
 }
 
-const AlleSoknader = ( {soknader }: Props) => {
+const AlleSoknader = ({ soknader }: Props) => {
+  if(!soknader) {
+    return <div>Ingen søknader</div>
+  }
+
   soknader.map((soknad) => console.log(soknad))
   return(
     <ul>
