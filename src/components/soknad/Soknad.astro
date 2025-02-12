@@ -42,6 +42,6 @@ const language = Astro.currentLocale as Language;
       />
     )
   }
-  <Innsendt client:only="react" soknad={soknad} />
-  <EttersendteVedlegg client:only="react" ettersendteVedlegg={ettersendteVedlegg}/>
+  {soknad && <Innsendt client:only="react" soknad={soknad} />}
+  {ettersendteVedlegg && <EttersendteVedlegg client:only="react" ettersendteVedlegg={ettersendteVedlegg}/>}
 </div>
