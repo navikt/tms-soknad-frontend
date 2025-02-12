@@ -8,7 +8,7 @@ import node from "@astrojs/node";
 export default defineConfig({
   base: "/minside/soknad", // The base path of your site. Useful for projects hosted under subpaths.
   build: {
-    assetsPrefix: "https://cdn.nav.no/min-side/soknad", // Change this to your CDN prefix
+    assetsPrefix: "https://cdn.nav.no/min-side/tms-soknad-frontend", // Change this to your CDN prefix
   },
   integrations: [
     react(),
