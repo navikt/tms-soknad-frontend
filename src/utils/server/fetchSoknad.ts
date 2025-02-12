@@ -23,6 +23,5 @@ export const fetchSoknad = async (
     );
   }
 
-  console.log(response);
   return await response.json();
 };
