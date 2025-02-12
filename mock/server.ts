@@ -12,7 +12,8 @@ api.use("/*", cors({
   credentials: true,
 }));
 
-api.get('/api/something', (c) => {
+api.get('/soknadskvittering/kvittering/*', (c) => {
+  console.log("kvittering")
   return c.json(soknad);
 });
 

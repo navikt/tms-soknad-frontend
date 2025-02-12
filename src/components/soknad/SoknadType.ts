@@ -1,6 +1,7 @@
 export interface Data {
   soknad: Soknad;
   manglendeVedlegg: ManglendeVedlegg[];
+  ettersendte: EttersendtVedlegg[];
 }
 
 export interface Soknad {
@@ -9,17 +10,13 @@ export interface Soknad {
   tidspunkt: string;
   ettersendingsfrist: string;
   url?: string;
-  vedlegg: {
-    url?: string;
-    titler: [string];
-  };
-  ettersendte: [
-    {
-      tittel: string;
-      url: string;
-      tidspunkt: string;
-    },
-  ];
+  vedlegg: Vedlegg[];
+  ettersendte: EttersendtVedlegg[];
+}
+
+export interface Vedlegg {
+  url: string;
+  tittel: string;
 }
 
 export interface ManglendeVedlegg {
@@ -27,4 +24,10 @@ export interface ManglendeVedlegg {
   tittel: string;
   url?: string;
   beskrivelse?: string;
+}
+
+export interface EttersendtVedlegg {
+  tittel: string;
+  url: string;
+  tidspunkt: string;
 }

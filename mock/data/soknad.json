@@ -1,47 +1,59 @@
 {
-	"soknad": {
+  "soknad": {
     "soknadsId": "12345",
-		"tittel": "Søknad om førerhund",
-		"tidspunkt": "2024-12-10T08:27:01Z",
-		"ettersendingsfrist": "2025-02-07T08:27:01Z",
-		"url": "https://www.ansatt.nav.no/minside",
-		"vedlegg": {
-			"url": "https://www.ansatt.nav.no/minside",
-			"titler": ["Vedlegg til søknad om førerhund 1", "Vedlegg til søknad om førerhund 2"]
-		},
-		"ettersendte": [
-			{
-				"tittel": "String",
-				"url": "String",
-				"tidspunkt": "2024-12-11T08:27:01Z"
-			}
-		]
-
-	},
-	"manglendeVedlegg": [
-		{
-			"type": "deg",
-			"tittel": "Vedlegg til søknad om førerhund 3",
-			"url": "https://www.ansatt.nav.no/minside",
-			"beskrivelse": "String?"
-		},
-		{
-			"type": "deg",
-			"tittel": "Vedlegg til søknad om førerhund 6",
-			"url": "https://www.ansatt.nav.no/minside",
-			"beskrivelse": "String?"
-		},
-		{
-			"type": "andre",
-			"tittel": "Vedlegg til søknad om førerhund 4",
-			"url": null,
-			"beskrivelse": "Legen din må sende inn dokumentasjon"
-		},
-		{
-			"type": "andre",
-			"tittel": "Vedlegg til søknad om førerhund 5",
-			"url": null,
-			"beskrivelse": "Legen din må sende inn dokumentasjon"
-		}
-	]
+    "tittel": "Søknad om førerhund",
+    "tidspunkt": "2024-12-10T08:27:01Z",
+    "ettersendingsfrist": "2025-02-07T08:27:01Z",
+    "url": "https://www.ansatt.nav.no/minside",
+    "vedlegg": [
+      {
+        "url": "https://www.ansatt.nav.no/minside",
+        "tittel": "Vedlegg til søknad om førerhund 1"
+      },
+      {
+        "url": "https://www.ansatt.nav.no/minside",
+        "tittel": "Vedlegg til søknad om førerhund 2",
+        "ettersendt": false
+      },
+      {
+        "url": "https://www.ansatt.nav.no/minside",
+        "tittel": "Vedlegg til søknad om førerhund 3",
+        "ettersendt": true,
+        "tidspunkt": "2024-12-11T08:27:01Z"
+      }
+    ],
+    "ettersendte": [
+      {
+        "tittel": "Vedlegg til søknad om førerhund 12",
+        "url": "",
+        "tidspunkt": "2024-12-11T11:34:01Z"
+      }
+    ]
+  },
+  "manglendeVedlegg": [
+    {
+      "type": "deg",
+      "tittel": "Vedlegg til søknad om førerhund 3",
+      "url": "https://www.ansatt.nav.no/minside",
+      "beskrivelse": "String?"
+    },
+    {
+      "type": "deg",
+      "tittel": "Vedlegg til søknad om førerhund 6",
+      "url": "https://www.ansatt.nav.no/minside",
+      "beskrivelse": "String?"
+    },
+    {
+      "type": "andre",
+      "tittel": "Vedlegg til søknad om førerhund 4",
+      "url": null,
+      "beskrivelse": "Legen din må sende inn dokumentasjon"
+    },
+    {
+      "type": "andre",
+      "tittel": "Vedlegg til søknad om førerhund 5",
+      "url": null,
+      "beskrivelse": null
+    }
+  ]
 }

@@ -1,8 +1,15 @@
-import {BodyShort, ExpansionCard, Heading, Link} from "@navikt/ds-react";
+import {
+  BodyLong,
+  BodyShort,
+  Box,
+  ExpansionCard,
+  Heading,
+  Link,
+} from "@navikt/ds-react";
 import type { Soknad } from "../soknad/SoknadType";
 import { format } from "date-fns";
-import { FilePdfIcon } from '@navikt/aksel-icons';
-import style from "./Innsendt.module.css";
+import { FilePdfIcon } from "@navikt/aksel-icons";
+import styles from "./Innsendt.module.css";
 
 interface Props {
   soknad: Soknad;
@@ -10,44 +17,48 @@ interface Props {
 
 const Innsendt = ({ soknad }: Props) => {
   return (
-    <ExpansionCard aria-label="Demo med bare tittel">
-      <ExpansionCard.Header>
-          <ExpansionCard.Title>Kvittering på innsendt søknad</ExpansionCard.Title>
-      </ExpansionCard.Header>
-      <ExpansionCard.Content>
-        <BodyShort>
-            {"Mottatt av NAV: " + format(new Date(soknad.tidspunkt), "dd.MM.yyyy")}
-        </BodyShort>
-          <div className={style.soknad}>
-            <Heading level="4" size="xsmall">
-              Søknad:
-            </Heading>
-            <Link className={style.tittel} href={soknad.url}>
-                <FilePdfIcon fontSize="1.5rem" />
-                <BodyShort>
-                  {soknad.tittel}
-                </BodyShort>
-            </Link>
+    <Box
+      className={styles.box}
+      background="surface-subtle"
+      padding="5"
+      paddingInline="6"
+      borderRadius="xlarge"
+    >
+      <Heading className={styles.heading} level="2" size="medium">
+        Kvittering på innsendt søknad
+      </Heading>
+      <BodyLong size="medium">
+        {"Mottatt av NAV: " + format(new Date(soknad.tidspunkt), "dd.MM.yyyy 'kl. 'HH:mm")}
+      </BodyLong>
+      <div className={styles.soknad}>
+        <Heading className={styles.tittel} level="4" size="xsmall">
+          Søknad:
+        </Heading>
+        <Link className={styles.link} href={soknad.url}>
+          <div className={styles.icon}>
+            <FilePdfIcon fontSize="1.5rem" />
           </div>
-          <Heading level="4" size="xsmall">
-              Vedlegg:
-          </Heading>
-          <ul>
-          {soknad.vedlegg.titler.map((tittel) => {
-              return (
-                  <li>
-                    <Link className={style.tittel} href={soknad.vedlegg.url}>
-                        <FilePdfIcon fontSize="1.5rem" />
-                        <BodyShort>
-                        {tittel}
-                        </BodyShort>
-                    </Link>±±±±±
-                  </li>
-              )
-          })}
-          </ul>±
-      </ExpansionCard.Content>
-    </ExpansionCard>
+          <BodyShort>{soknad.tittel}</BodyShort>
+        </Link>
+      </div>
+      <Heading className={styles.tittel} level="4" size="xsmall">
+        Vedlegg:
+      </Heading>
+      <ul>
+        {soknad.vedlegg.map((vedlegg) => {
+          return (
+            <li key={vedlegg.tittel}>
+              <Link className={styles.link} href={vedlegg.url}>
+                <div className={styles.icon}>
+                  <FilePdfIcon fontSize="1.5rem" />
+                </div>
+                <BodyShort>{vedlegg.tittel}</BodyShort>
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </Box>
   );
 };
 

@@ -1,22 +1,36 @@
 ---
-import { exampleApiUrl } from "@src/utils/server/urls";
+import { getSoknadUrl } from "@src/utils/server/urls";
 import type { Language } from "@src/language/language";
 import Innsendt from "../innsendt/Innsendt";
-import Manglende from "../manglende/Manglende.tsx";
+import Manglende from "../manglende/Manglende";
+import EttersendteVedlegg from "../ettersendt/EttersendteVedlegg"
 import type { Data } from "./SoknadType";
 import { Heading } from "@navikt/ds-react";
-import styles from './Soknad.module.css'
+import styles from "./Soknad.module.css";
 
-const { soknad, manglendeVedlegg }: Data = await fetch(exampleApiUrl)
+const { soknadsUrl } = Astro.props;
+
+const { soknad, manglendeVedlegg }: Data = await fetch(soknadsUrl)
   .then((response) => response.json())
   .then((data) => data);
 
 const language = Astro.currentLocale as Language;
+
 ---
+
 <div class={styles.container}>
-<Heading level="1" size="large">{soknad.tittel}</Heading>
-<Innsendt client:only="react" soknad={soknad}/>
-{manglendeVedlegg && (
-<Manglende client:only="react" manglendeVedlegg={manglendeVedlegg} ettersendingsfrist={soknad.ettersendingsfrist} />
-)}
+  <Heading className={styles.heading} level="1" size="large"
+    >{soknad.tittel}</Heading
+  >
+  {
+    manglendeVedlegg && (
+      <Manglende
+        client:only="react"
+        manglendeVedlegg={manglendeVedlegg}
+        ettersendingsfrist={soknad.ettersendingsfrist}
+      />
+    )
+  }
+  <Innsendt client:only="react" soknad={soknad} />
+  <EttersendteVedlegg client:only="react" ettersendteVedlegg={soknad.ettersendte}/>
 </div>

@@ -16,10 +16,10 @@ export const getEnvironment = () => {
 
 type EnvUrl = { development: string; production: string; local: string };
 
-const EXAMPLE_API_URL = {
-  local: "http://localhost:3000/api/something",
-  development: "http://example-your-api-app/api/something",
-  production: "http://example-your-api-app/api/something",
+const SOKNAD_API_URL = {
+  local: "http://localhost:3000/soknadskvittering",
+  development: "http://tms-soknadskvittering",
+  production: "http://tms-soknadskvittering",
 };
 
 const BASE_URL: EnvUrl = {
@@ -28,5 +28,6 @@ const BASE_URL: EnvUrl = {
   production: "https://www.nav.no/minside/soknad",
 };
 
-export const exampleApiUrl = EXAMPLE_API_URL[getEnvironment()];
+export const soknadApiUrl = SOKNAD_API_URL[getEnvironment()];
 export const baseUrl = BASE_URL[getEnvironment()];
+export const getSoknadUrl = (soknadsId: string) => `${soknadApiUrl}/kvittering/${soknadsId}`;

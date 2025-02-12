@@ -3,11 +3,15 @@
 }
 
 .heading {
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
 .tittel {
   margin-bottom: 0.5rem;
+}
+
+.date {
+  margin-bottom: 1.25rem;
 }
 
 .link {
@@ -20,21 +24,6 @@
 
 .link:hover .icon {
   background-color: var(--a-surface-action-subtle-hover);
-}
-
-.soknad {
-  margin-top: 1rem;
-  padding-bottom: 1.5rem;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-li {
-  margin-bottom: 0.75rem;
 }
 
 .icon {

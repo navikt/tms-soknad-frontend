@@ -3,10 +3,8 @@ import { text } from "../../language/text";
 import Layout from "../../layouts/Layout.astro";
 import { Heading } from "@navikt/ds-react";
 import type { Language } from "../../language/language";
-import AstroIslandExample from "@src/components/astro-island/AstroIsland.astro";
 
 const language = Astro.currentLocale as Language;
-  console.error("Neverlucky i index");
 
 ---
 
@@ -18,6 +16,4 @@ const language = Astro.currentLocale as Language;
             </Heading>
         </div>
     </div>
-    <AstroIslandExample server:defer>
-    </AstroIslandExample>
 </Layout>

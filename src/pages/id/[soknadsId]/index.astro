@@ -1,0 +1,16 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import type { Language } from "../../../language/language";
+import Soknad from "@src/components/soknad/Soknad.astro";
+import { getSoknadUrl } from "@src/utils/server/urls";
+
+
+const { soknadsId } = Astro.params;
+console.log(soknadsId)
+const soknadsUrl = soknadsId && getSoknadUrl(soknadsId);
+const language = Astro.currentLocale as Language;
+---
+
+<Layout>
+  <Soknad server:defer soknadsUrl={soknadsUrl}/>
+</Layout>

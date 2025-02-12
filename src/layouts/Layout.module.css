@@ -1,5 +1,5 @@
 body {
-  background-color: var(--a-bg-subtle);
+  background-color: var(--a-surface-default);
 }
 .main {
   max-width: none;
@@ -8,7 +8,7 @@ body {
 .container {
   padding: 0;
   min-height: 600px;
-  max-width: 912px;
+  max-width: 592px;
   margin: 0 auto;
 }
 

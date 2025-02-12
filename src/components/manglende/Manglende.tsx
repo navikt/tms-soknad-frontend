@@ -1,9 +1,15 @@
-import { BodyShort, ExpansionCard, Heading, Link } from "@navikt/ds-react";
+import {
+  BodyLong,
+  BodyShort,
+  Box,
+  ExpansionCard,
+  Heading,
+  Link,
+} from "@navikt/ds-react";
 import type { ManglendeVedlegg } from "../soknad/SoknadType";
-import { FilePdfIcon } from "@navikt/aksel-icons";
-import styles from './Manglende.module.css'
+import { FileExportIcon, UploadIcon } from "@navikt/aksel-icons";
+import styles from "./Manglende.module.css";
 import { format } from "date-fns";
-
 
 interface Props {
   manglendeVedlegg: ManglendeVedlegg[];
@@ -11,46 +17,56 @@ interface Props {
 }
 
 const Manglende = ({ manglendeVedlegg, ettersendingsfrist }: Props) => {
-  return(
-    <ExpansionCard aria-label="Demo med bare tittel">
-      <ExpansionCard.Header>
-          <ExpansionCard.Title>Manglende dokumentasjon</ExpansionCard.Title>
-          <ExpansionCard.Description>
-           {"Fristen for ettersendelse er: " + format(new Date(ettersendingsfrist), "dd.MM.yyyy")}
-       </ExpansionCard.Description>
-      </ExpansionCard.Header>
-      <ExpansionCard.Content>
-        <Heading level="4" size="xsmall" spacing>Du må ettersende følgende dokumentasjon          
+  return (
+    <>
+      <Box
+        className={styles.topBox}
+        background="surface-action-subtle"
+        padding="5"
+        paddingInline="6"
+        borderRadius="xlarge"
+      >
+        <Heading className={styles.heading} level="2" size="medium">
+          Manglende dokumentasjon
         </Heading>
         <ul>
-          {manglendeVedlegg.map((vedlegg) => (
-            vedlegg.type === 'deg' && <li>
-              <Link  href={vedlegg.url}>
-                <BodyShort>
-                  {vedlegg.tittel}
-                </BodyShort>
-            </Link>
-            </li>
-          ))}
+          {manglendeVedlegg.map(
+            (vedlegg) =>
+              vedlegg.type === "deg" && (
+                <li key={vedlegg.tittel}>
+                  <Link className={styles.link} href={vedlegg.url}>
+                    <div className={styles.icon}>
+                      <FileExportIcon fontSize="1.5rem" />
+                    </div>
+                    <BodyLong>{vedlegg.tittel}</BodyLong>
+                  </Link>
+                </li>
+              )
+          )}
         </ul>
-        <Heading size='xsmall' level='4' spacing>
-          Du må sørge for at følgende dokumenter blir sendt til Nav
-        </Heading>
-        {manglendeVedlegg.map((vedlegg) => (
-          vedlegg.type === 'andre' && (
-            <div className={styles.andre}>
-              <Heading size='xsmall' level='4'>
-                {vedlegg.tittel}
-              </Heading>
-              <BodyShort>
-                {vedlegg.beskrivelse}
-              </BodyShort>
-            </div>
-          )
-        ))}
-      </ExpansionCard.Content>
-    </ExpansionCard>
-  )
+        <BodyLong>
+          <span>
+            Fristen for ettersendelse er:{" "}
+            <strong>
+              {format(new Date(ettersendingsfrist), "dd.MM.yyyy")}
+            </strong>
+          </span>
+        </BodyLong>
+      </Box>
+      <Box
+        className={styles.bottomBox}
+        background="surface-action-subtle"
+        borderRadius="xlarge"
+      >
+        <Link className={styles.uploadLink} href={""}>
+          <BodyLong><strong>Last opp dokumentasjon</strong></BodyLong>
+          <div className={styles.uploadIcon}>
+            <UploadIcon fontSize="1.25rem" />
+          </div>
+        </Link>
+      </Box>
+    </>
+  );
 };
 
 export default Manglende;
