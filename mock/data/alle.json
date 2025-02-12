@@ -1,0 +1,48 @@
+[
+  {
+    "soknadsId":"805e2400-e1b0-4c58-9652-6183727710c6",
+    "tittel":"Første søknadskvittering noen sinne??",
+    "temakode":"UKJ",
+    "skjemanummer":"Skjema-123",
+    "tidspunktMottatt":"2025-02-11T15:26:16.898387+01:00",
+    "fristEttersending":"2025-02-25",
+    "linkSoknad":null,
+    "journalpostId":null,
+    "mottatteVedlegg":[
+      {
+        "vedleggsId":"vedlegg-1",
+        "brukerErAvsender":true,
+        "erEttersending":false,
+        "tittel":"Vedlegg mottatt når søknad ble sendt inn",
+        "linkVedlegg":"https://www.ansatt.nav.no",
+        "tidspunktMottatt":"2025-02-11T14:26:16.8983869Z"
+      }
+    ],
+    "manglendeVedlegg":[
+      {
+        "vedleggsId":"vedlegg-2",
+        "brukerErAvsender":true,
+        "tittel":"Vedlegg som bruker må sende inn",
+        "beskrivelse":null,
+        "linkEttersending":"https://www.ansatt.nav.no",
+        "tidspunktEtterspurt":"2025-02-11T14:26:16.8983869Z"
+      },
+      {
+        "vedleggsId":"vedlegg-3",
+        "brukerErAvsender":false,
+        "tittel":"Vedlegg som bruker sier tredjepart sender inn",
+        "beskrivelse":"Eventuell detaljert beskrivelse av vedlegg som er etterspurt",
+        "linkEttersending":null,"tidspunktEtterspurt":"2025-02-11T14:26:16.8983869Z"
+      },
+      {
+        "vedleggsId":"vedlegg-4",
+        "brukerErAvsender":false,
+        "tittel":"Annet vedlegg som bruker sier tredjepart sender inn",
+        "beskrivelse":null,
+        "linkEttersending":null,
+        "tidspunktEtterspurt":"2025-02-11T14:26:16.8983869Z"
+      }
+    ],
+    "opprettet":"2025-02-11T15:26:17.766+01:00"
+  }
+] 

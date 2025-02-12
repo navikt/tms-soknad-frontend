@@ -1,11 +1,11 @@
-import { BodyLong, BodyShort, Box, Heading, Link } from "@navikt/ds-react";
-import type { EttersendtVedlegg } from "../soknad/SoknadType";
-import styles from "./EttersendteVedlegg.module.css";
-import { format } from "date-fns";
 import { FilePdfIcon } from "@navikt/aksel-icons";
+import { BodyLong, BodyShort, Box, Heading, Link } from "@navikt/ds-react";
+import { format } from "date-fns";
+import type { MotatteVedlegg } from "../soknad/SoknadType";
+import styles from "./EttersendteVedlegg.module.css";
 
 interface Props {
-  ettersendteVedlegg: EttersendtVedlegg[];
+  ettersendteVedlegg: MotatteVedlegg[];
 }
 
 const EttersendteVedlegg = ({ ettersendteVedlegg }: Props) => {
@@ -26,9 +26,9 @@ const EttersendteVedlegg = ({ ettersendteVedlegg }: Props) => {
             <BodyLong className={styles.date}>
               {" "}
               {"Mottatt av NAV: " +
-                format(new Date(vedlegg.tidspunkt), "dd.MM.yyyy 'kl. 'HH:mm")}
+                format(new Date(vedlegg.tidspunktMottatt), "dd.MM.yyyy 'kl. 'HH:mm")}
             </BodyLong>
-            <Link className={styles.link} href={vedlegg.url}>
+            <Link className={styles.link} href={vedlegg.linkVedlegg}>
               <div className={styles.icon}>
                 <FilePdfIcon fontSize="1.5rem" />
               </div>

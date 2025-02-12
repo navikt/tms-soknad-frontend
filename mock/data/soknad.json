@@ -1,59 +1,63 @@
 {
-  "soknad": {
-    "soknadsId": "12345",
-    "tittel": "Søknad om førerhund",
-    "tidspunkt": "2024-12-10T08:27:01Z",
-    "ettersendingsfrist": "2025-02-07T08:27:01Z",
-    "url": "https://www.ansatt.nav.no/minside",
-    "vedlegg": [
-      {
-        "url": "https://www.ansatt.nav.no/minside",
-        "tittel": "Vedlegg til søknad om førerhund 1"
-      },
-      {
-        "url": "https://www.ansatt.nav.no/minside",
-        "tittel": "Vedlegg til søknad om førerhund 2",
-        "ettersendt": false
-      },
-      {
-        "url": "https://www.ansatt.nav.no/minside",
-        "tittel": "Vedlegg til søknad om førerhund 3",
-        "ettersendt": true,
-        "tidspunkt": "2024-12-11T08:27:01Z"
-      }
-    ],
-    "ettersendte": [
-      {
-        "tittel": "Vedlegg til søknad om førerhund 12",
-        "url": "",
-        "tidspunkt": "2024-12-11T11:34:01Z"
-      }
-    ]
-  },
+  "soknadsId": "805e2400-e1b0-4c58-9652-6183727710c6",
+  "tittel": "Første søknadskvittering noen sinne??",
+  "temakode": "UKJ",
+  "skjemanummer": "Skjema-123",
+  "tidspunktMottatt": "2025-02-11T15:26:16.898387+01:00",
+  "fristEttersending": "2025-02-25",
+  "linkSoknad": null,
+  "journalpostId": null,
+  "mottatteVedlegg": [
+    {
+      "vedleggsId": "vedlegg-1",
+      "brukerErAvsender": true,
+      "erEttersending": false,
+      "tittel": "Vedlegg mottatt når søknad ble sendt inn",
+      "linkVedlegg": "https://www.ansatt.nav.no",
+      "tidspunktMottatt": "2025-02-11T14:26:16.8983869Z"
+    },
+    {
+      "vedleggsId": "vedlegg-2",
+      "brukerErAvsender": true,
+      "erEttersending": true,
+      "tittel": "Vedlegg mottatt som ettersending første",
+      "linkVedlegg": "https://www.ansatt.nav.no",
+      "tidspunktMottatt": "2025-02-13T11:59:24.8983869Z"
+    },
+    {
+      "vedleggsId": "vedlegg-3",
+      "brukerErAvsender": true,
+      "erEttersending": true,
+      "tittel": "Vedlegg mottatt som ettersending andre",
+      "linkVedlegg": "https://www.ansatt.nav.no",
+      "tidspunktMottatt": "2025-02-15T14:10:21.8983869Z"
+    }
+  ],
   "manglendeVedlegg": [
     {
-      "type": "deg",
-      "tittel": "Vedlegg til søknad om førerhund 3",
-      "url": "https://www.ansatt.nav.no/minside",
-      "beskrivelse": "String?"
+      "vedleggsId": "vedlegg-2",
+      "brukerErAvsender": true,
+      "tittel": "Vedlegg som bruker må sende inn",
+      "beskrivelse": null,
+      "linkEttersending": "https://www.ansatt.nav.no",
+      "tidspunktEtterspurt": "2025-02-11T14:26:16.8983869Z"
     },
     {
-      "type": "deg",
-      "tittel": "Vedlegg til søknad om førerhund 6",
-      "url": "https://www.ansatt.nav.no/minside",
-      "beskrivelse": "String?"
+      "vedleggsId": "vedlegg-3",
+      "brukerErAvsender": false,
+      "tittel": "Vedlegg som bruker sier tredjepart sender inn",
+      "beskrivelse": "Eventuell detaljert beskrivelse av vedlegg som er etterspurt",
+      "linkEttersending": null,
+      "tidspunktEtterspurt": "2025-02-11T14:26:16.8983869Z"
     },
     {
-      "type": "andre",
-      "tittel": "Vedlegg til søknad om førerhund 4",
-      "url": null,
-      "beskrivelse": "Legen din må sende inn dokumentasjon"
-    },
-    {
-      "type": "andre",
-      "tittel": "Vedlegg til søknad om førerhund 5",
-      "url": null,
-      "beskrivelse": null
+      "vedleggsId": "vedlegg-4",
+      "brukerErAvsender": false,
+      "tittel": "Annet vedlegg som bruker sier tredjepart sender inn",
+      "beskrivelse": null,
+      "linkEttersending": null,
+      "tidspunktEtterspurt": "2025-02-11T14:26:16.8983869Z"
     }
-  ]
+  ],
+  "opprettet": "2025-02-11T15:26:17.766+01:00"
 }

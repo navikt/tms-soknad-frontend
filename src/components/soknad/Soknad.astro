@@ -4,15 +4,17 @@ import type { Language } from "@src/language/language";
 import Innsendt from "../innsendt/Innsendt";
 import Manglende from "../manglende/Manglende";
 import EttersendteVedlegg from "../ettersendt/EttersendteVedlegg"
-import type { Data } from "./SoknadType";
+import type { SoknadsData, SoknadsObject } from "./SoknadType";
 import { Heading } from "@navikt/ds-react";
 import styles from "./Soknad.module.css";
 
 const { soknadsUrl } = Astro.props;
 
-const { soknad, manglendeVedlegg }: Data = await fetch(soknadsUrl)
+const soknad : SoknadsObject = await fetch(soknadsUrl)
   .then((response) => response.json())
   .then((data) => data);
+
+const ettersendteVedlegg = soknad?.mottatteVedlegg.filter((vedlegg) => vedlegg.erEttersending)
 
 const language = Astro.currentLocale as Language;
 
@@ -21,17 +23,17 @@ const language = Astro.currentLocale as Language;
 
 <div class={styles.container}>
   <Heading className={styles.heading} level="1" size="large"
-    >{soknad.tittel}</Heading
+    >{soknad?.tittel}</Heading
   >
   {
-    manglendeVedlegg && (
+    soknad?.manglendeVedlegg && (
       <Manglende
         client:only="react"
-        manglendeVedlegg={manglendeVedlegg}
-        ettersendingsfrist={soknad.ettersendingsfrist}
+        manglendeVedlegg={soknad?.manglendeVedlegg}
+        ettersendingsfrist={soknad?.fristEttersending}
       />
     )
   }
   <Innsendt client:only="react" soknad={soknad} />
-  <EttersendteVedlegg client:only="react" ettersendteVedlegg={soknad.ettersendte}/>
+  <EttersendteVedlegg client:only="react" ettersendteVedlegg={ettersendteVedlegg}/>
 </div>

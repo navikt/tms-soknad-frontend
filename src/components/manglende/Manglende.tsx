@@ -30,19 +30,16 @@ const Manglende = ({ manglendeVedlegg, ettersendingsfrist }: Props) => {
           Manglende dokumentasjon
         </Heading>
         <ul>
-          {manglendeVedlegg.map(
-            (vedlegg) =>
-              vedlegg.type === "deg" && (
-                <li key={vedlegg.tittel}>
-                  <Link className={styles.link} href={vedlegg.url}>
-                    <div className={styles.icon}>
-                      <FileExportIcon fontSize="1.5rem" />
-                    </div>
-                    <BodyLong>{vedlegg.tittel}</BodyLong>
-                  </Link>
-                </li>
-              )
-          )}
+          {manglendeVedlegg.map((vedlegg) => (
+            <li key={vedlegg.tittel}>
+              <Link className={styles.link} href={vedlegg?.linkEttersending}>
+                <div className={styles.icon}>
+                  <FileExportIcon fontSize="1.5rem" />
+                </div>
+                <BodyLong>{vedlegg.tittel}</BodyLong>
+              </Link>
+            </li>
+          ))}
         </ul>
         <BodyLong>
           <span>
@@ -59,7 +56,9 @@ const Manglende = ({ manglendeVedlegg, ettersendingsfrist }: Props) => {
         borderRadius="xlarge"
       >
         <Link className={styles.uploadLink} href={""}>
-          <BodyLong><strong>Last opp dokumentasjon</strong></BodyLong>
+          <BodyLong>
+            <strong>Last opp dokumentasjon</strong>
+          </BodyLong>
           <div className={styles.uploadIcon}>
             <UploadIcon fontSize="1.25rem" />
           </div>
@@ -70,4 +69,3 @@ const Manglende = ({ manglendeVedlegg, ettersendingsfrist }: Props) => {
 };
 
 export default Manglende;
-

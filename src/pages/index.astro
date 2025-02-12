@@ -1,11 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import type { Language } from '../language/language';
-import Soknad from '@src/components/soknad/Soknad.astro';
+import { getAlleSoknaderUrl } from '@src/utils/server/urls';
+import type { SoknadsData } from "@src/components/soknad/SoknadType";
+import AlleSoknader from "@src/components/alle-soknader/AlleSoknader.tsx"
+import { Link } from '@navikt/ds-react';
+
+const soknader: SoknadsData[] = await fetch(getAlleSoknaderUrl)
+  .then((response) => response.json())
+  .then((data) => data);
 
 const language = Astro.currentLocale as Language;
 ---
 
 <Layout>
-    <div>Soknadsoversikt</div>
+  <AlleSoknader soknader={soknader}/>
 </Layout>

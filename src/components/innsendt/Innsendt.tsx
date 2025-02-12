@@ -2,20 +2,23 @@ import {
   BodyLong,
   BodyShort,
   Box,
-  ExpansionCard,
   Heading,
   Link,
 } from "@navikt/ds-react";
-import type { Soknad } from "../soknad/SoknadType";
+import type { SoknadsObject } from "../soknad/SoknadType";
 import { format } from "date-fns";
 import { FilePdfIcon } from "@navikt/aksel-icons";
 import styles from "./Innsendt.module.css";
 
 interface Props {
-  soknad: Soknad;
+  soknad: SoknadsObject;
 }
 
 const Innsendt = ({ soknad }: Props) => {
+  if(!soknad) {
+    return null;
+  }
+
   return (
     <Box
       className={styles.box}
@@ -28,33 +31,36 @@ const Innsendt = ({ soknad }: Props) => {
         Kvittering på innsendt søknad
       </Heading>
       <BodyLong size="medium">
-        {"Mottatt av NAV: " + format(new Date(soknad.tidspunkt), "dd.MM.yyyy 'kl. 'HH:mm")}
+        {"Mottatt av NAV: " +
+          format(new Date(soknad?.tidspunktMottatt), "dd.MM.yyyy 'kl. 'HH:mm")}
       </BodyLong>
       <div className={styles.soknad}>
         <Heading className={styles.tittel} level="4" size="xsmall">
           Søknad:
         </Heading>
-        <Link className={styles.link} href={soknad.url}>
+        <Link className={styles.link} href={soknad?.linkSoknad}>
           <div className={styles.icon}>
             <FilePdfIcon fontSize="1.5rem" />
           </div>
-          <BodyShort>{soknad.tittel}</BodyShort>
+          <BodyShort>{soknad?.tittel}</BodyShort>
         </Link>
       </div>
       <Heading className={styles.tittel} level="4" size="xsmall">
         Vedlegg:
       </Heading>
       <ul>
-        {soknad.vedlegg.map((vedlegg) => {
+        {soknad?.mottatteVedlegg.map((vedlegg) => {
           return (
-            <li key={vedlegg.tittel}>
-              <Link className={styles.link} href={vedlegg.url}>
-                <div className={styles.icon}>
-                  <FilePdfIcon fontSize="1.5rem" />
-                </div>
-                <BodyShort>{vedlegg.tittel}</BodyShort>
-              </Link>
-            </li>
+            !vedlegg.erEttersending && (
+              <li key={vedlegg?.tittel}>
+                <Link className={styles.link} href={vedlegg.linkVedlegg}>
+                  <div className={styles.icon}>
+                    <FilePdfIcon fontSize="1.5rem" />
+                  </div>
+                  <BodyShort>{vedlegg?.tittel}</BodyShort>
+                </Link>
+              </li>
+            )
           );
         })}
       </ul>

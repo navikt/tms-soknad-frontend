@@ -6,7 +6,6 @@ import { getSoknadUrl } from "@src/utils/server/urls";
 
 
 const { soknadsId } = Astro.params;
-console.log(soknadsId)
 const soknadsUrl = soknadsId && getSoknadUrl(soknadsId);
 const language = Astro.currentLocale as Language;
 ---
