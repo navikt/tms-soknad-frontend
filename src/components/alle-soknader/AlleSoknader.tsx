@@ -33,7 +33,7 @@ const AlleSoknader = ({ soknader }: Props) => {
               <Heading className={styles.heading} level="2" size="medium">
                 Søknad mottatt
               </Heading>
-              {soknad.manglendeVedlegg && <Tag variant="neutral">Dokumentasjon mangler</Tag>}
+              {soknad.manglendeVedlegg.length > 0 && <Tag variant="neutral">Dokumentasjon mangler</Tag>}
             </div>
             <BodyLong className={styles.date}>
               {" "}
