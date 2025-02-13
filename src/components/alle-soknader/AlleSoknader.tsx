@@ -1,4 +1,4 @@
-import { BodyLong, BodyShort, Box, Heading, Link } from "@navikt/ds-react";
+import { BodyLong, BodyShort, Box, Heading, Link, Tag } from "@navikt/ds-react";
 import type { SoknadsObject } from "../soknad/SoknadType";
 import { enkeltSoknadUrl } from "@src/utils/server/urls";
 import styles from "./AlleSoknader.module.css";
@@ -29,9 +29,12 @@ const AlleSoknader = ({ soknader }: Props) => {
             paddingInline="6"
             borderRadius="xlarge"
           >
-            <Heading className={styles.heading} level="2" size="medium">
-              Søknad mottatt
-            </Heading>
+            <div className={styles.headingWrapper}>
+              <Heading className={styles.heading} level="2" size="medium">
+                Søknad mottatt
+              </Heading>
+              {soknad.manglendeVedlegg && <Tag variant="neutral">Dokumentasjon mangler</Tag>}
+            </div>
             <BodyLong className={styles.date}>
               {" "}
               {"Mottatt av NAV: " +
