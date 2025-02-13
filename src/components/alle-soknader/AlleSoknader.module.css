@@ -28,17 +28,16 @@ ul {
   color: var(--a-text-default);
 }
 
-.link:hover .icon {
-  background-color: var(--a-surface-action-subtle-hover);
+.link:hover {
+  text-decoration: none;
+  cursor: pointer;
 }
 
-.manglende:hover .box {
-  background-color: var(--a-surface-warning-subtle-hover);
+.chevron {
+  line-height: 0;
+  transition: 0.3s;
 }
 
-.icon {
-  display: flex;
-  padding: 0.5rem;
-  background-color: var(--a-surface-default);
-  border-radius: 4px;
+.link:hover .chevron{
+  transform: translate(4px);
 }
