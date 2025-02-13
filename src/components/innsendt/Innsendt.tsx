@@ -1,10 +1,4 @@
-import {
-  BodyLong,
-  BodyShort,
-  Box,
-  Heading,
-  Link,
-} from "@navikt/ds-react";
+import { BodyLong, BodyShort, Box, Heading, Link } from "@navikt/ds-react";
 import type { SoknadsObject } from "../soknad/SoknadType";
 import { format } from "date-fns";
 import { FilePdfIcon } from "@navikt/aksel-icons";
@@ -15,9 +9,11 @@ interface Props {
 }
 
 const Innsendt = ({ soknad }: Props) => {
-  if(!soknad) {
+  if (!soknad) {
     return null;
   }
+
+  const hasVedlegg = soknad.mottatteVedlegg.length > 0;
 
   return (
     <Box
@@ -45,9 +41,11 @@ const Innsendt = ({ soknad }: Props) => {
           <BodyShort>{soknad?.tittel}</BodyShort>
         </Link>
       </div>
-      <Heading className={styles.tittel} level="4" size="xsmall">
-        Vedlegg:
-      </Heading>
+      {hasVedlegg && (
+        <Heading className={styles.tittel} level="4" size="xsmall">
+          Vedlegg:
+        </Heading>
+      )}
       <ul>
         {soknad?.mottatteVedlegg.map((vedlegg) => {
           return (

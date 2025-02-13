@@ -21,10 +21,11 @@ ul {
 
 .link {
   display: flex;
-  flex-basis: content;
   gap: 0.5rem;
   align-content: center;
+  justify-content: space-between;
   margin-top: 0.2rem;
+  color: var(--a-text-default);
 }
 
 .link:hover .icon {

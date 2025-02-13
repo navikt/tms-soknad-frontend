@@ -3,7 +3,7 @@ import type { SoknadsObject } from "../soknad/SoknadType";
 import { enkeltSoknadUrl } from "@src/utils/server/urls";
 import styles from "./AlleSoknader.module.css";
 import { format } from "date-fns";
-import { FilePdfIcon } from "@navikt/aksel-icons";
+import { ChevronRightIcon } from "@navikt/aksel-icons";
 
 interface Props {
   soknader: SoknadsObject[] | null;
@@ -20,7 +20,11 @@ const AlleSoknader = ({ soknader }: Props) => {
         <li>
           <Box
             className={styles.box}
-            background={soknad.manglendeVedlegg.length > 0 ? "surface-warning-subtle" : "surface-subtle"}
+            background={
+              soknad.manglendeVedlegg.length > 0
+                ? "surface-warning-subtle"
+                : "surface-subtle"
+            }
             padding="5"
             paddingInline="6"
             borderRadius="xlarge"
@@ -31,13 +35,23 @@ const AlleSoknader = ({ soknader }: Props) => {
             <BodyLong className={styles.date}>
               {" "}
               {"Mottatt av NAV: " +
-                format(new Date(soknad.tidspunktMottatt), "dd.MM.yyyy 'kl. 'HH:mm")}
+                format(
+                  new Date(soknad.tidspunktMottatt),
+                  "dd.MM.yyyy 'kl. 'HH:mm"
+                )}
             </BodyLong>
-            <Link className={soknad.manglendeVedlegg ? `${styles.link} ${styles.manglende}` : styles.link} href={enkeltSoknadUrl(soknad.soknadsId)}>
-              <div className={styles.icon}>
-                <FilePdfIcon fontSize="1.5rem" />
-              </div>
+            <Link
+              className={
+                soknad.manglendeVedlegg
+                  ? `${styles.link} ${styles.manglende}`
+                  : styles.link
+              }
+              href={enkeltSoknadUrl(soknad.soknadsId)}
+            >
               <BodyShort>{soknad.tittel}</BodyShort>
+              <div className={styles.chevron}>
+                <ChevronRightIcon fontSize="1.25rem" />
+              </div>
             </Link>
           </Box>
         </li>
