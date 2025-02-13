@@ -42,26 +42,28 @@ const Innsendt = ({ soknad }: Props) => {
         </Link>
       </div>
       {hasVedlegg && (
-        <Heading className={styles.tittel} level="4" size="xsmall">
-          Vedlegg:
-        </Heading>
+        <div className={styles.vedleggsWrapper}>
+          <Heading className={styles.tittel} level="4" size="xsmall">
+            Vedlegg:
+          </Heading>
+          <ul>
+            {soknad?.mottatteVedlegg.map((vedlegg) => {
+              return (
+                !vedlegg.erEttersending && (
+                  <li key={vedlegg?.tittel}>
+                    <Link className={styles.link} href={vedlegg.linkVedlegg}>
+                      <div className={styles.icon}>
+                        <FilePdfIcon fontSize="1.5rem" />
+                      </div>
+                      <BodyShort>{vedlegg?.tittel}</BodyShort>
+                    </Link>
+                  </li>
+                )
+              );
+            })}
+          </ul>
+        </div>
       )}
-      <ul>
-        {soknad?.mottatteVedlegg.map((vedlegg) => {
-          return (
-            !vedlegg.erEttersending && (
-              <li key={vedlegg?.tittel}>
-                <Link className={styles.link} href={vedlegg.linkVedlegg}>
-                  <div className={styles.icon}>
-                    <FilePdfIcon fontSize="1.5rem" />
-                  </div>
-                  <BodyShort>{vedlegg?.tittel}</BodyShort>
-                </Link>
-              </li>
-            )
-          );
-        })}
-      </ul>
     </Box>
   );
 };

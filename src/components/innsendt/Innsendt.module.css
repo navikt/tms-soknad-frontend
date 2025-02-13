@@ -24,7 +24,10 @@
 
 .soknad {
   margin-top: 1rem;
-  padding-bottom: 1.5rem;
+}
+
+.vedleggsWrapper {
+  padding-top: 1.5rem;
 }
 
 ul {
