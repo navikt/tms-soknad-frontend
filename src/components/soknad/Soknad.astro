@@ -1,10 +1,9 @@
 ---
-import { getSoknadUrl } from "@src/utils/server/urls";
 import type { Language } from "@src/language/language";
 import Innsendt from "../innsendt/Innsendt";
 import Manglende from "../manglende/Manglende";
 import EttersendteVedlegg from "../ettersendt/EttersendteVedlegg"
-import type { SoknadsData, SoknadsObject } from "./SoknadType";
+import type { SoknadsObject } from "./SoknadType";
 import { Heading } from "@navikt/ds-react";
 import styles from "./Soknad.module.css";
 import { fetchSoknad } from "@src/utils/server/fetchSoknad";
@@ -26,6 +25,8 @@ const ettersendteVedlegg = soknad?.mottatteVedlegg.filter((vedlegg) => vedlegg.e
 
 const language = Astro.currentLocale as Language;
 
+const hasManglendeVedlegg = soknad && soknad.manglendeVedlegg.length > 0;
+
 ---
 
 
@@ -34,7 +35,7 @@ const language = Astro.currentLocale as Language;
     >{soknad?.tittel}</Heading
   >
   {
-    soknad?.manglendeVedlegg && (
+    soknad?.manglendeVedlegg && hasManglendeVedlegg && (
       <Manglende
         client:only="react"
         manglendeVedlegg={soknad?.manglendeVedlegg}

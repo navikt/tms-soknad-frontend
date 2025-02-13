@@ -20,7 +20,7 @@ const AlleSoknader = ({ soknader }: Props) => {
         <li>
           <Box
             className={styles.box}
-            background={soknad.manglendeVedlegg ? "surface-warning-subtle" : "surface-subtle"}
+            background={soknad.manglendeVedlegg.length > 0 ? "surface-warning-subtle" : "surface-subtle"}
             padding="5"
             paddingInline="6"
             borderRadius="xlarge"
