@@ -1,0 +1,43 @@
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.box {
+  margin-bottom: 0.5rem;
+}
+
+.heading {
+  margin-bottom: 0.5rem;
+}
+
+.tittel {
+  margin-bottom: 0.5rem;
+}
+
+.date {
+  margin-bottom: 1.25rem;
+}
+
+.link {
+  display: flex;
+  flex-basis: content;
+  gap: 0.5rem;
+  align-content: center;
+  margin-top: 0.2rem;
+}
+
+.link:hover .icon {
+  background-color: var(--a-surface-action-subtle-hover);
+}
+
+.manglende:hover .box {
+  background-color: var(--a-surface-warning-subtle-hover);
+}
+
+.icon {
+  display: flex;
+  padding: 0.5rem;
+  background-color: var(--a-surface-default);
+  border-radius: 4px;
+}

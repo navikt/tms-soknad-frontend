@@ -1,8 +1,9 @@
 export const text = {
   title: {
-    nb: 'Norsk bokmål tms-soknad-frontend',
-    en: 'English tms-soknad-frontend',
-    nn: 'Norsk nynorsk tms-soknad-frontend',
+    nb: 'Søknader',
+    nn: 'Søknadar',
+    en: 'Applications',
+    
   },
   name: {
     nb: 'Navn',

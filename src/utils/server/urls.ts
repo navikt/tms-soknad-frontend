@@ -30,5 +30,5 @@ const BASE_URL: EnvUrl = {
 export const soknadApiUrl = SOKNAD_API_URL[getEnvironment()];
 export const baseUrl = BASE_URL[getEnvironment()];
 export const enkeltSoknadUrl = (soknadsId: string) => `${baseUrl}/id/${soknadsId}`;
-export const getAlleSoknaderUrl = `${soknadApiUrl}/kvittering/alle`;
+export const getAlleSoknaderUrl = `${soknadApiUrl}/kvitteringer/alle`;
 export const getSoknadUrl = (soknadsId: string) => `${soknadApiUrl}/kvittering/${soknadsId}`;

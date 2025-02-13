@@ -13,7 +13,7 @@ api.use("/*", cors({
   credentials: true,
 }));
 
-api.get('/soknadskvittering/kvittering/alle', (c) => {
+api.get('/soknadskvittering/kvitteringer/alle', (c) => {
   return c.json(alle);
 });
 

@@ -4,6 +4,8 @@ import type { Language } from '../language/language';
 import type { SoknadsObject } from "@src/components/soknad/SoknadType";
 import AlleSoknader from "@src/components/alle-soknader/AlleSoknader.tsx"
 import { fetchAlleSoknader } from '@src/utils/server/fetchAlleSoknader';
+import { Heading } from '@navikt/ds-react';
+import { text } from '@src/language/text';
 
 let soknader: SoknadsObject[] | null = null;
 let soknadsFetchError: boolean = false;
@@ -20,5 +22,8 @@ const language = Astro.currentLocale as Language;
 ---
 
 <Layout>
-  <AlleSoknader soknader={soknader}/>
+  <Heading level='1' size='large'>
+    {text.title[language]}
+  </Heading>
+  <AlleSoknader server:defer soknader={soknader}/>
 </Layout>
