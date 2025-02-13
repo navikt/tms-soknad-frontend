@@ -2,7 +2,7 @@
 import Layout from "../../../layouts/Layout.astro";
 import type { Language } from "../../../language/language";
 import Soknad from "@src/components/soknad/Soknad.astro";
-import { getSoknadUrl } from "@src/utils/server/urls";
+import Breadcrumbs from "@src/components/breadcrumbs/Breadcrumbs.astro";
 
 
 const { soknadsId } = Astro.params;
@@ -10,5 +10,6 @@ const language = Astro.currentLocale as Language;
 ---
 
 <Layout>
+  <Breadcrumbs language={language}/>
   <Soknad server:defer soknadsId={soknadsId}/>
 </Layout>

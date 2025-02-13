@@ -21,7 +21,7 @@ try {
 const language = Astro.currentLocale as Language;
 ---
 
-<Layout>
+<Layout breadcrumbs={[]}>
   <Heading level='1' size='large'>
     {text.title[language]}
   </Heading>

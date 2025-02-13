@@ -10,4 +10,9 @@ export const text = {
     en: 'Name',
     nn: 'Navn',
   },
+  minSide: {
+    nb: 'Min side',
+    nn: 'Mi side',
+    en: 'My page',
+  },
 };

@@ -27,8 +27,15 @@ const BASE_URL: EnvUrl = {
   production: 'https://www.nav.no/minside/soknad',
 };
 
+const MIN_SIDE_URL: EnvUrl = {
+  local: 'http://localhost:4321/minside',
+  development: 'https://www.ansatt.dev.nav.no/minside',
+  production: 'https://www.nav.no/minside',
+};
+
 export const soknadApiUrl = SOKNAD_API_URL[getEnvironment()];
 export const baseUrl = BASE_URL[getEnvironment()];
+export const minSideUrl = MIN_SIDE_URL[getEnvironment()];
 export const enkeltSoknadUrl = (soknadsId: string) => `${baseUrl}/id/${soknadsId}`;
 export const getAlleSoknaderUrl = `${soknadApiUrl}/kvitteringer/alle`;
 export const getSoknadUrl = (soknadsId: string) => `${soknadApiUrl}/kvittering/${soknadsId}`;
