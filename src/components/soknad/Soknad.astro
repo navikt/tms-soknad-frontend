@@ -1,12 +1,12 @@
 ---
-import type { Language } from "@src/language/language";
-import Innsendt from "../innsendt/Innsendt";
-import Manglende from "../manglende/Manglende";
-import EttersendteVedlegg from "../ettersendt/EttersendteVedlegg"
-import type { SoknadsObject } from "./SoknadType";
-import { Heading } from "@navikt/ds-react";
-import styles from "./Soknad.module.css";
-import { fetchSoknad } from "@src/utils/server/fetchSoknad";
+import type { Language } from '@src/language/language';
+import Innsendt from '../innsendt/Innsendt';
+import Manglende from '../manglende/Manglende';
+import EttersendteVedlegg from '../ettersendt/EttersendteVedlegg';
+import type { SoknadsObject } from './SoknadType';
+import { Heading } from '@navikt/ds-react';
+import styles from './Soknad.module.css';
+import { fetchSoknad } from '@src/utils/server/fetchSoknad';
 
 const { soknadsId } = Astro.props;
 
@@ -16,19 +16,19 @@ let soknadsFetchError: boolean = false;
 try {
   soknad = await fetchSoknad(Astro.locals.token, soknadsId);
 } catch (error: any) {
-  console.log(error)
+  console.log(error);
   console.error('Fetch failed.', error.message);
   soknadsFetchError = true;
 }
 
-const ettersendteVedlegg = soknad?.mottatteVedlegg.filter((vedlegg) => vedlegg.erEttersending)
+const ettersendteVedlegg = soknad?.mottatteVedlegg.filter(
+  (vedlegg) => vedlegg.erEttersending,
+);
 
 const language = Astro.currentLocale as Language;
 
 const hasManglendeVedlegg = soknad && soknad.manglendeVedlegg.length > 0;
-
 ---
-
 
 <div class={styles.container}>
   <Heading className={styles.heading} level="1" size="large"
@@ -44,5 +44,12 @@ const hasManglendeVedlegg = soknad && soknad.manglendeVedlegg.length > 0;
     )
   }
   {soknad && <Innsendt client:only="react" soknad={soknad} />}
-  {ettersendteVedlegg && <EttersendteVedlegg client:only="react" ettersendteVedlegg={ettersendteVedlegg}/>}
+  {
+    ettersendteVedlegg && (
+      <EttersendteVedlegg
+        client:only="react"
+        ettersendteVedlegg={ettersendteVedlegg}
+      />
+    )
+  }
 </div>

@@ -5,11 +5,11 @@ import {
   ExpansionCard,
   Heading,
   Link,
-} from "@navikt/ds-react";
-import type { ManglendeVedlegg } from "../soknad/SoknadType";
-import { FileExportIcon, UploadIcon } from "@navikt/aksel-icons";
-import styles from "./Manglende.module.css";
-import { format } from "date-fns";
+} from '@navikt/ds-react';
+import type { ManglendeVedlegg } from '../soknad/SoknadType';
+import { FileExportIcon, UploadIcon } from '@navikt/aksel-icons';
+import styles from './Manglende.module.css';
+import { format } from 'date-fns';
 
 interface Props {
   manglendeVedlegg: ManglendeVedlegg[];
@@ -43,9 +43,9 @@ const Manglende = ({ manglendeVedlegg, ettersendingsfrist }: Props) => {
         </ul>
         <BodyLong>
           <span>
-            Fristen for ettersendelse er:{" "}
+            Fristen for ettersendelse er:{' '}
             <strong>
-              {format(new Date(ettersendingsfrist), "dd.MM.yyyy")}
+              {format(new Date(ettersendingsfrist), 'dd.MM.yyyy')}
             </strong>
           </span>
         </BodyLong>
@@ -55,7 +55,7 @@ const Manglende = ({ manglendeVedlegg, ettersendingsfrist }: Props) => {
         background="surface-action-subtle"
         borderRadius="xlarge"
       >
-        <Link className={styles.uploadLink} href={""}>
+        <Link className={styles.uploadLink} href={''}>
           <BodyLong>
             <strong>Last opp dokumentasjon</strong>
           </BodyLong>

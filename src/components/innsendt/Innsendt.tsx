@@ -1,8 +1,8 @@
-import { BodyLong, BodyShort, Box, Heading, Link } from "@navikt/ds-react";
-import type { SoknadsObject } from "../soknad/SoknadType";
-import { format } from "date-fns";
-import { FilePdfIcon } from "@navikt/aksel-icons";
-import styles from "./Innsendt.module.css";
+import { BodyLong, BodyShort, Box, Heading, Link } from '@navikt/ds-react';
+import type { SoknadsObject } from '../soknad/SoknadType';
+import { format } from 'date-fns';
+import { FilePdfIcon } from '@navikt/aksel-icons';
+import styles from './Innsendt.module.css';
 
 interface Props {
   soknad: SoknadsObject;
@@ -27,7 +27,7 @@ const Innsendt = ({ soknad }: Props) => {
         Kvittering på innsendt søknad
       </Heading>
       <BodyLong size="medium">
-        {"Mottatt av NAV: " +
+        {'Mottatt av NAV: ' +
           format(new Date(soknad?.tidspunktMottatt), "dd.MM.yyyy 'kl. 'HH:mm")}
       </BodyLong>
       <div className={styles.soknad}>
