@@ -5,7 +5,8 @@ import { getAlleSoknaderUrl } from "@src/utils/server/urls";
 export const fetchAlleSoknader = async (
   token: string,
 ): Promise<SoknadsObject[]> => {
-  const oboToken = await getOboToken(token);
+  const audience = `${process.env.NAIS_CLUSTER_NAME}:min-side:tms-soknadskvittering`;
+  const oboToken = await getOboToken(token, audience);
 
   const response = await fetch(getAlleSoknaderUrl, {
     method: "GET",

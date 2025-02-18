@@ -6,7 +6,8 @@ export const fetchSoknad = async (
   token: string,
   id: string
 ): Promise<SoknadsObject> => {
-  const oboToken = await getOboToken(token);
+  const audience = `${process.env.NAIS_CLUSTER_NAME}:min-side:tms-soknadskvittering`;
+  const oboToken = await getOboToken(token, audience);
 
   const response = await fetch(getSoknadUrl(id), {
     method: "GET",

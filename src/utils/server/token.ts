@@ -2,9 +2,7 @@ import { requestOboToken } from '@navikt/oasis';
 import { isLocal } from '@src/utils/server/environment.ts';
 import { generateKeyPair, SignJWT } from 'jose';
 
-const audience = `${process.env.NAIS_CLUSTER_NAME}:min-side:tms-soknadskvittering`;
-
-export const getOboToken = async (token: string): Promise<string> => {
+export const getOboToken = async (token: string, audience: string): Promise<string> => {
   const oboResult = await requestOboToken(token, audience);
 
   if (isLocal) {

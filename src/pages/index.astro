@@ -1,11 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import type { Language } from '../language/language';
-import type { SoknadsObject } from "@src/components/soknad/SoknadType";
-import AlleSoknader from "@src/components/alle-soknader/AlleSoknader.tsx"
+import type { SoknadsObject } from '@src/components/soknad/SoknadType';
+import AlleSoknader from '@src/components/alle-soknader/AlleSoknader.tsx';
 import { fetchAlleSoknader } from '@src/utils/server/fetchAlleSoknader';
 import { Heading } from '@navikt/ds-react';
 import { text } from '@src/language/text';
+import { fetchKontonummer } from '@src/utils/server/fetchKontonummer';
 
 let soknader: SoknadsObject[] | null = null;
 let soknadsFetchError: boolean = false;
@@ -13,17 +14,20 @@ let soknadsFetchError: boolean = false;
 try {
   soknader = await fetchAlleSoknader(Astro.locals.token);
 } catch (error: any) {
-  console.log(error)
+  console.log(error);
   console.error('Fetch failed.', error.message);
   soknadsFetchError = true;
 }
+
+const kontonummer = await fetchKontonummer(Astro.locals.token);
 
 const language = Astro.currentLocale as Language;
 ---
 
 <Layout breadcrumbs={[]}>
-  <Heading level='1' size='large'>
+  <Heading level="1" size="large">
     {text.title[language]}
   </Heading>
-  <AlleSoknader server:defer soknader={soknader}/>
+  <AlleSoknader server:defer soknader={soknader} />
+  <p>{kontonummer.kontonummer}</p>
 </Layout>
