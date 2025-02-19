@@ -26,6 +26,8 @@ spec:
     max: 4
   accessPolicy:
     outbound:
+      external:
+        - host: sokos-kontoregister-person.intern.dev.nav.no
       rules:
         - application: tms-soknadskvittering
         - application: nav-dekoratoren
