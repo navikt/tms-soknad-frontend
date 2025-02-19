@@ -6,7 +6,6 @@ import AlleSoknader from '@src/components/alle-soknader/AlleSoknader.tsx';
 import { fetchAlleSoknader } from '@src/utils/server/fetchAlleSoknader';
 import { Heading } from '@navikt/ds-react';
 import { text } from '@src/language/text';
-import { fetchKontonummer } from '@src/utils/server/fetchKontonummer';
 
 let soknader: SoknadsObject[] | null = null;
 let soknadsFetchError: boolean = false;
@@ -19,8 +18,6 @@ try {
   soknadsFetchError = true;
 }
 
-const kontonummer = await fetchKontonummer(Astro.locals.token);
-
 const language = Astro.currentLocale as Language;
 ---
 
@@ -29,5 +26,4 @@ const language = Astro.currentLocale as Language;
     {text.title[language]}
   </Heading>
   <AlleSoknader server:defer soknader={soknader} />
-  <p>{kontonummer.kontonummer}</p>
 </Layout>
