@@ -24,7 +24,7 @@ try {
 }
 
 const ettersendteVedlegg = soknad?.mottatteVedlegg.filter(
-  (vedlegg) => vedlegg.erEttersending
+  (vedlegg) => vedlegg.erEttersending,
 );
 
 const language = Astro.currentLocale as Language;
