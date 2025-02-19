@@ -24,7 +24,7 @@ export const fetchKontonummer = async (token: string): Promise<any> => {
       Accept: "application/json",
       Authorization: `Bearer ${oboToken}`,
     },
-    body: JSON.stringify({ Kontohaver: pid }),
+    body: JSON.stringify({ kontohaver: pid }),
   });
   console.log("response", response);
 
