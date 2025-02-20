@@ -33,15 +33,15 @@ export const fetchKontonummer = async (token: string): Promise<Kontonummer> => {
     return { feilmelding: "Kunne ikke hente kontonummer" };
   }
 
-  const data = await response.json();
+  const data: Kontonummer = await response.json();
 
-  if (data.utenlandskKontoInfo || data.feilmelding) {
+  if ("utenlandskKontoInfo" in data || "feilmelding" in data) {
     return data;
   }
 
   return { kontonummer: formatKontonummer(data.kontonummer) };
 };
 
-export const formatKontonummer = (kontonummer: string): string => {
+const formatKontonummer = (kontonummer: string): string => {
   return `${kontonummer.slice(0, 4)}.${kontonummer.slice(4, 6)}.${kontonummer.slice(6)}`;
 };

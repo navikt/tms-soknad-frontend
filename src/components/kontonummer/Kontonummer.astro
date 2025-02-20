@@ -2,29 +2,39 @@
 import { fetchKontonummer } from '@src/utils/server/fetchKontonummer';
 import { Heading, Link, BodyShort, Alert, Box } from '@navikt/ds-react';
 import styles from './Kontonummer.module.css';
+import type { Kontonummer } from '@src/types/types.ts';
 
-const kontonummer = await fetchKontonummer(Astro.locals.token);
+const kontonummer = (await fetchKontonummer(Astro.locals.token)) as Kontonummer;
 ---
 
-<Box
-  background="surface-action-subtle"
-  padding="5"
-  paddingInline="6"
-  borderRadius="xlarge"
-  className={styles.box}
->
-  <Heading level="2" size="medium">Konto for utbetaling</Heading>
-  <div>
-    <Heading level="3" size="xsmall">Kontonummer</Heading>
-    <BodyShort>
-      {kontonummer.kontonummer}
-    </BodyShort>
-  </div>
-  <Link href="#">Endre kontonummer for utbetaling</Link>
-  <Alert variant="info" size="small">
-    <BodyShort>
-      Hvis du ikke kjenner igjen kontonummeret, må du kontakte oss på telefon 55
-      55 33 33 i åpningstiden eller kontakte oss via våre digitale kanaler.
-    </BodyShort>
-  </Alert>
-</Box>
+{
+  'feilmelding' in kontonummer ? null : (
+    <Box
+      background="surface-action-subtle"
+      padding="5"
+      paddingInline="6"
+      borderRadius="xlarge"
+      className={styles.box}
+    >
+      <Heading level="2" size="medium">
+        Konto for utbetaling
+      </Heading>
+      <div>
+        <Heading level="3" size="xsmall">
+          Kontonummer
+        </Heading>
+        <BodyShort>{kontonummer.kontonummer}</BodyShort>
+      </div>
+      <Link href="/person/personopplysninger/nb/#utbetaling">
+        Endre kontonummer for utbetaling
+      </Link>
+      <Alert variant="info" size="small">
+        <BodyShort>
+          Hvis du ikke kjenner igjen kontonummeret, må du kontakte oss på
+          telefon 55 55 33 33 i åpningstiden eller kontakte oss via våre
+          digitale kanaler.
+        </BodyShort>
+      </Alert>
+    </Box>
+  )
+}
