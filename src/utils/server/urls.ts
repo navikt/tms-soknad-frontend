@@ -36,9 +36,9 @@ const MIN_SIDE_URL: EnvUrl = {
 const KONTOREGISTER_URL = {
   local: 'http://localhost:3000/api/borger/v1/hent-aktiv-konto',
   development:
-    'https://sokos-kontoregister-person.intern.dev.nav.no/api/borger/v1/hent-aktiv-konto',
+    'http://sokos-kontoregister-person/api/borger/v1/hent-aktiv-konto',
   production:
-    'https://sokos-kontoregister-person.intern.nav.no/api/borger/v1/hent-aktiv-konto',
+    'http://sokos-kontoregister-person/api/borger/v1/hent-aktiv-konto',
 };
 
 export const soknadApiUrl = SOKNAD_API_URL[getEnvironment()];

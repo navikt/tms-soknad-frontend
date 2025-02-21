@@ -26,11 +26,11 @@ spec:
     max: 4
   accessPolicy:
     outbound:
-      external:
-        - host: sokos-kontoregister-person.intern.nav.no  
       rules:
         - application: nav-dekoratoren
           namespace: personbruker
+        - application: sokos-kontoregister-person
+          namespace: okonomi        
   ingresses:
     - "https://www.nav.no/minside/soknad"
   resources:
