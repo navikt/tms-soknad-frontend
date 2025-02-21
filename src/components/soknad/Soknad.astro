@@ -24,7 +24,7 @@ try {
 }
 
 const ettersendteVedlegg = soknad?.mottatteVedlegg.filter(
-  (vedlegg) => vedlegg.erEttersending,
+  (vedlegg) => vedlegg.erEttersending
 );
 
 const language = Astro.currentLocale as Language;
@@ -54,4 +54,7 @@ const hasManglendeVedlegg = soknad && soknad.manglendeVedlegg.length > 0;
       />
     )
   }
+  <Kontonummer server:defer>
+    <KontonummerSkeleton slot="fallback" />
+  </Kontonummer>
 </div>
