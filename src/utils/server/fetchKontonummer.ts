@@ -1,7 +1,7 @@
-import { getKontoUrl } from "./urls.ts";
-import { parseIdportenToken } from "@navikt/oasis";
-import { getOboToken } from "./token.ts";
-import type { Kontonummer } from "@src/types/types.ts";
+import { getKontoUrl } from './urls.ts';
+import { parseIdportenToken } from '@navikt/oasis';
+import { getOboToken } from './token.ts';
+import type { Kontonummer } from '@src/types/types.ts';
 
 export const fetchKontonummer = async (token: string): Promise<Kontonummer> => {
   const audience = `${process.env.NAIS_CLUSTER_NAME}:okonomi:sokos-kontoregister-person`;
@@ -9,31 +9,30 @@ export const fetchKontonummer = async (token: string): Promise<Kontonummer> => {
   const parsedToken = parseIdportenToken(token);
 
   if (!parsedToken.ok) {
-    console.error("Could not parse token" + parsedToken.error);
-    return { feilmelding: "Kunne ikke hente kontonummer" };
+    console.error('Could not parse token' + parsedToken.error);
+    return { feilmelding: 'Kunne ikke hente kontonummer' };
   }
 
   const pid = parsedToken.pid;
   const response = await fetch(getKontoUrl, {
-    method: "POST",
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
       Authorization: `Bearer ${oboToken}`,
     },
     body: JSON.stringify({ kontohaver: pid }),
   });
 
   if (!response.ok) {
-    console.error(
-      "http error with status " + response.status + "when fetching kontonummer",
+    throw new Error(
+      'http error with status ' + response.status + 'when fetching kontonummer',
     );
-    return { feilmelding: "Kunne ikke hente kontonummer" };
   }
 
   const data: Kontonummer = await response.json();
 
-  if ("utenlandskKontoInfo" in data || "feilmelding" in data) {
+  if ('utenlandskKontoInfo' in data || 'feilmelding' in data) {
     return data;
   }
 

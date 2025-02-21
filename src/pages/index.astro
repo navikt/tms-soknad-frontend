@@ -6,15 +6,16 @@ import AlleSoknader from '@src/components/alle-soknader/AlleSoknader.tsx';
 import { fetchAlleSoknader } from '@src/utils/server/fetchAlleSoknader';
 import { Heading } from '@navikt/ds-react';
 import { text } from '@src/language/text';
+import pino from 'pino-http';
 
+const logger = pino().logger;
 let soknader: SoknadsObject[] | null = null;
 let soknadsFetchError: boolean = false;
 
 try {
   soknader = await fetchAlleSoknader(Astro.locals.token);
 } catch (error: any) {
-  console.log(error);
-  console.error('Fetch failed.', error.message);
+  logger.error('Fetch failed.', error.message);
   soknadsFetchError = true;
 }
 

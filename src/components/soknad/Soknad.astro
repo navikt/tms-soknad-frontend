@@ -7,17 +7,18 @@ import type { SoknadsObject } from './SoknadType';
 import { Heading } from '@navikt/ds-react';
 import styles from './Soknad.module.css';
 import { fetchSoknad } from '@src/utils/server/fetchSoknad';
+import pino from 'pino-http';
 
 const { soknadsId } = Astro.props;
 
+const logger = pino().logger;
 let soknad: SoknadsObject | null = null;
 let soknadsFetchError: boolean = false;
 
 try {
   soknad = await fetchSoknad(Astro.locals.token, soknadsId);
 } catch (error: any) {
-  console.log(error);
-  console.error('Fetch failed.', error.message);
+  logger.error('Fetch failed.', error.message);
   soknadsFetchError = true;
 }
 
