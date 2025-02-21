@@ -32,9 +32,9 @@ export const fetchKontonummer = async (token: string): Promise<Kontonummer> => {
     );
     return { feilmelding: 'Kunne ikke hente kontonummer' };
   }
-
+  console.log('response', response);
   const data: Kontonummer = await response.json();
-
+  console.log('data', data);
   if ('utenlandskKontoInfo' in data || 'feilmelding' in data) {
     return data;
   }
