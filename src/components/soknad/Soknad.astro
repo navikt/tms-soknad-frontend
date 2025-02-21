@@ -7,8 +7,6 @@ import type { SoknadsObject } from './SoknadType';
 import { Heading } from '@navikt/ds-react';
 import styles from './Soknad.module.css';
 import { fetchSoknad } from '@src/utils/server/fetchSoknad';
-import Kontonummer from '../kontonummer/Kontonummer.astro';
-import KontonummerSkeleton from '../kontonummer/KontonummerSkeleton.astro';
 
 const { soknadsId } = Astro.props;
 
@@ -54,7 +52,4 @@ const hasManglendeVedlegg = soknad && soknad.manglendeVedlegg.length > 0;
       />
     )
   }
-  <Kontonummer server:defer>
-    <KontonummerSkeleton slot="fallback" />
-  </Kontonummer>
 </div>
