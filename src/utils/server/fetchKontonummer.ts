@@ -10,7 +10,6 @@ export const fetchKontonummer = async (token: string): Promise<Kontonummer> => {
 
   if (!parsedToken.ok) {
     console.error("Could not parse token" + parsedToken.error);
-    console.error("Cannot parse token");
     return { feilmelding: "Kunne ikke hente kontonummer" };
   }
 
