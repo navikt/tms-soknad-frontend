@@ -1,9 +1,9 @@
-import { BodyLong, BodyShort, Box, Heading, Link, Tag } from "@navikt/ds-react";
-import type { SoknadsObject } from "../soknad/SoknadType";
-import { enkeltSoknadUrl } from "@src/utils/server/urls";
-import styles from "./AlleSoknader.module.css";
-import { format } from "date-fns";
-import { ChevronRightIcon } from "@navikt/aksel-icons";
+import { BodyLong, BodyShort, Box, Heading, Link, Tag } from '@navikt/ds-react';
+import type { SoknadsObject } from '../soknad/SoknadType';
+import { enkeltSoknadUrl } from '@src/utils/server/urls';
+import styles from './AlleSoknader.module.css';
+import { format } from 'date-fns';
+import { ChevronRightIcon } from '@navikt/aksel-icons';
 
 interface Props {
   soknader: SoknadsObject[] | null;
@@ -22,8 +22,8 @@ const AlleSoknader = ({ soknader }: Props) => {
             className={styles.box}
             background={
               soknad.manglendeVedlegg.length > 0
-                ? "surface-warning-subtle"
-                : "surface-subtle"
+                ? 'surface-warning-subtle'
+                : 'surface-subtle'
             }
             padding="5"
             paddingInline="6"
@@ -33,14 +33,16 @@ const AlleSoknader = ({ soknader }: Props) => {
               <Heading className={styles.heading} level="2" size="medium">
                 Søknad mottatt
               </Heading>
-              {soknad.manglendeVedlegg.length > 0 && <Tag variant="neutral">Dokumentasjon mangler</Tag>}
+              {soknad.manglendeVedlegg.length > 0 && (
+                <Tag variant="neutral">Dokumentasjon mangler</Tag>
+              )}
             </div>
             <BodyLong className={styles.date}>
-              {" "}
-              {"Mottatt av NAV: " +
+              {' '}
+              {'Mottatt av NAV: ' +
                 format(
                   new Date(soknad.tidspunktMottatt),
-                  "dd.MM.yyyy 'kl. 'HH:mm"
+                  "dd.MM.yyyy 'kl. 'HH:mm",
                 )}
             </BodyLong>
             <Link

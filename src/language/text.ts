@@ -3,7 +3,6 @@ export const text = {
     nb: 'Søknader',
     nn: 'Søknadar',
     en: 'Applications',
-    
   },
   name: {
     nb: 'Navn',

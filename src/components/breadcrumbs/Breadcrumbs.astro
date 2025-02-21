@@ -1,11 +1,10 @@
 ---
-import { text } from "@src/language/text"
-import style from "./Breadcrumbs.module.css"
-import type { Language } from "@src/language/language";
-import { baseUrl, minSideUrl } from "@src/utils/server/urls";
+import { text } from '@src/language/text';
+import style from './Breadcrumbs.module.css';
+import type { Language } from '@src/language/language';
+import { baseUrl, minSideUrl } from '@src/utils/server/urls';
 
 const language = Astro.currentLocale as Language;
-
 ---
 
 <div class={style.container}>
