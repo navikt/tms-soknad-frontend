@@ -3,8 +3,17 @@ import { fetchKontonummer } from '@src/utils/server/fetchKontonummer';
 import { Heading, Link, BodyShort, Alert, Box } from '@navikt/ds-react';
 import styles from './Kontonummer.module.css';
 import type { Kontonummer } from '@src/types/types.ts';
+import pino from 'pino-http';
 
-const kontonummer = (await fetchKontonummer(Astro.locals.token)) as Kontonummer;
+let kontonummer: Kontonummer;
+
+try {
+  kontonummer = await fetchKontonummer(Astro.locals.token);
+} catch (error: any) {
+  const logger = pino().logger;
+  logger.error('Fetch failed.', error.message);
+  kontonummer = { feilmelding: '' };
+}
 ---
 
 {
