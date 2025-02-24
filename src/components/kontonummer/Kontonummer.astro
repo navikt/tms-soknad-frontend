@@ -5,18 +5,19 @@ import styles from './Kontonummer.module.css';
 import type { Kontonummer } from '@src/types/types.ts';
 import pino from 'pino-http';
 
-let kontonummer: Kontonummer | null = null;
+let kontonummer: Kontonummer;
 
 try {
   kontonummer = await fetchKontonummer(Astro.locals.token);
 } catch (error: any) {
   const logger = pino().logger;
   logger.error('Fetch failed.', error.message);
+  kontonummer = { feilmelding: '' };
 }
 ---
 
 {
-  kontonummer ? (
+  'feilmelding' in kontonummer ? null : (
     <Box
       background="surface-action-subtle"
       padding="5"
@@ -44,5 +45,5 @@ try {
         </BodyShort>
       </Alert>
     </Box>
-  ) : null
+  )
 }
