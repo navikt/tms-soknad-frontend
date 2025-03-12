@@ -26,6 +26,8 @@ spec:
     max: 4
   accessPolicy:
     outbound:
+      external:
+        - host: safselvbetjening.dev-fss-pub.nais.io
       rules:
         - application: tms-soknadskvittering
         - application: nav-dekoratoren

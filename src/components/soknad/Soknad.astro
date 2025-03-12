@@ -24,7 +24,7 @@ try {
 }
 
 const ettersendteVedlegg = soknad?.mottatteVedlegg.filter(
-  (vedlegg) => vedlegg.erEttersending
+  (vedlegg) => vedlegg.erEttersending,
 );
 
 const language = Astro.currentLocale as Language;
@@ -33,28 +33,28 @@ const hasManglendeVedlegg = soknad && soknad.manglendeVedlegg.length > 0;
 
 const journalposter = await fetchJournalposter(
   Astro.locals.token,
-  soknad!.temakode
+  soknad!.temakode,
 );
 ---
 
 <div class={styles.container}>
-  <Heading className={styles.heading} level='1' size='large'
+  <Heading className={styles.heading} level="1" size="large"
     >{soknad?.tittel}</Heading
   >
   {
     soknad?.manglendeVedlegg && hasManglendeVedlegg && (
       <Manglende
-        client:only='react'
+        client:only="react"
         manglendeVedlegg={soknad?.manglendeVedlegg}
         ettersendingsfrist={soknad?.fristEttersending}
       />
     )
   }
-  {soknad && <Innsendt client:only='react' soknad={soknad} />}
+  {soknad && <Innsendt client:only="react" soknad={soknad} />}
   {
     ettersendteVedlegg && (
       <EttersendteVedlegg
-        client:only='react'
+        client:only="react"
         ettersendteVedlegg={ettersendteVedlegg}
       />
     )
