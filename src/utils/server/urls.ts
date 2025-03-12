@@ -41,6 +41,13 @@ const KONTOREGISTER_URL = {
     'http://sokos-kontoregister-person.okonomi/api/borger/v1/hent-aktiv-konto',
 };
 
+const SAF_API_URL = {
+  local: 'http://localhost:3000/api/saf',
+  development: 'https://safselvbetjening.dev-fss-pub.nais.io',
+  production: 'https://safselvbetjening.prod-fss-pub.nais.io	',
+  ansatt: 'https://safselvbetjening.dev-fss-pub.nais.io',
+};
+
 export const soknadApiUrl = SOKNAD_API_URL[getEnvironment()];
 export const baseUrl = BASE_URL[getEnvironment()];
 export const minSideUrl = MIN_SIDE_URL[getEnvironment()];
@@ -50,3 +57,4 @@ export const getAlleSoknaderUrl = `${soknadApiUrl}/kvitteringer/alle`;
 export const getSoknadUrl = (soknadsId: string) =>
   `${soknadApiUrl}/kvittering/${soknadsId}`;
 export const getKontoUrl = KONTOREGISTER_URL[getEnvironment()];
+export const getSAFUrl = SAF_API_URL[getEnvironment()];
