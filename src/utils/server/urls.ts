@@ -43,9 +43,9 @@ const KONTOREGISTER_URL = {
 
 const SAF_API_URL = {
   local: 'http://localhost:3000/api/saf',
-  development: 'https://safselvbetjening.dev-fss-pub.nais.io',
-  production: 'https://safselvbetjening.prod-fss-pub.nais.io	',
-  ansatt: 'https://safselvbetjening.dev-fss-pub.nais.io',
+  development: 'https://safselvbetjening.dev-fss-pub.nais.io/graphql',
+  production: 'https://safselvbetjening.prod-fss-pub.nais.io/graphql',
+  ansatt: 'https://safselvbetjening.dev-fss-pub.nais.io/graphql',
 };
 
 export const soknadApiUrl = SOKNAD_API_URL[getEnvironment()];
