@@ -25,7 +25,7 @@ export const fetchJournalposter = async (token: string, tema: string) => {
       Authorization: `Bearer ${oboToken}`,
     },
     body: JSON.stringify({
-      query: `query GetDocuments($ident: String!, $tema: [Tema]!) {
+      query: `query($ident: String!, $tema: [Tema]!) {
 dokumentoversiktSelvbetjening(ident: $ident, tema: $tema) {
     tema {
       navn
@@ -39,7 +39,7 @@ dokumentoversiktSelvbetjening(ident: $ident, tema: $tema) {
 }`,
       variables: {
         ident: pid,
-        tema: tema,
+        tema: [tema],
       },
     }),
   })
