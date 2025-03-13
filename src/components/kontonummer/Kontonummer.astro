@@ -1,9 +1,9 @@
 ---
-import { fetchKontonummer } from '@src/utils/server/fetchKontonummer';
-import { Heading, Link, BodyShort, Alert, Box } from '@navikt/ds-react';
-import styles from './Kontonummer.module.css';
-import type { Kontonummer } from '@src/types/types.ts';
-import pino from 'pino-http';
+import { fetchKontonummer } from "@src/utils/server/fetchKontonummer";
+import { Heading, Link, BodyShort, Alert, Box } from "@navikt/ds-react";
+import styles from "./Kontonummer.module.css";
+import type { Kontonummer } from "@src/types/types.ts";
+import pino from "pino-http";
 
 let kontonummer: Kontonummer;
 
@@ -11,20 +11,14 @@ try {
   kontonummer = await fetchKontonummer(Astro.locals.token);
 } catch (error: any) {
   const logger = pino().logger;
-  logger.error('Fetch failed.', error.message);
-  kontonummer = { feilmelding: '' };
+  logger.error("Fetch failed.", error.message);
+  kontonummer = { feilmelding: "" };
 }
 ---
 
 {
-  'feilmelding' in kontonummer ? null : (
-    <Box
-      background="surface-action-subtle"
-      padding="5"
-      paddingInline="6"
-      borderRadius="xlarge"
-      className={styles.box}
-    >
+  "feilmelding" in kontonummer ? null : (
+    <div class={styles.container}>
       <Heading level="2" size="medium">
         Konto for utbetaling
       </Heading>
@@ -44,6 +38,6 @@ try {
           digitale kanaler.
         </BodyShort>
       </Alert>
-    </Box>
+    </div>
   )
 }

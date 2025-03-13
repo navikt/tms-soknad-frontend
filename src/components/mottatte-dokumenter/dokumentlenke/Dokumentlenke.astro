@@ -1,0 +1,27 @@
+---
+import { Detail } from "@navikt/ds-react";
+import { format } from 'date-fns';
+import styles from "./Dokumentlenke.module.css";
+
+//const { dokument } = Astro.props;
+
+const dokument = {
+  href: "",
+  tittel: "Dokument tittel",
+  filstorrelse: 12345678,
+  filtype: "pdf",
+  tidspunktMottatt: "2025-02-11T14:26:16.8983869Z"
+};
+
+---
+
+<div class={styles.container}>
+  <div class={styles.details}>
+    <Detail>{format(new Date(dokument.tidspunktMottatt), "dd.MM.yyyy 'kl 'HH:mm")}</Detail>
+    <Detail>{dokument.filtype.toUpperCase()}</Detail>
+    <Detail>{dokument.filstorrelse}</Detail>
+  </div>
+  <a href={dokument.href} class={styles.link}>
+    {dokument.tittel}
+  </a>
+</div>

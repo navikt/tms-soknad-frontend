@@ -1,0 +1,32 @@
+---
+import { BodyLong, Heading } from "@navikt/ds-react";
+import { text } from "@src/language/text";
+import { format } from "date-fns";
+import type { Language } from "@src/language/language";
+import styles from "./Ingress.module.css";
+
+interface Props {
+  ettersendingsfrist: string;
+  hasManglendeVedlegg: boolean;
+}
+
+const { ettersendingsfrist, hasManglendeVedlegg } = Astro.props;
+const language = Astro.currentLocale as Language;
+---
+
+<div class={styles.container}>
+  <Heading className={styles.heading} level="2" size="medium"
+    >Følg opp søknaden</Heading
+  >
+  {
+    hasManglendeVedlegg ? (
+      <BodyLong>
+        {text.manglendeVedleggIngress[language](
+          format(new Date(ettersendingsfrist), "dd.MM.yyyy")
+        )}
+      </BodyLong>
+    ) : (
+      <BodyLong>{text.vedleggIngress[language]}</BodyLong>
+    )
+  }
+</div>

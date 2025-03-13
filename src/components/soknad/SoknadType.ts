@@ -7,42 +7,8 @@ export interface SoknadsObject {
   fristEttersending: string;
   linkSoknad: string;
   journalpostId: string;
-  mottatteVedlegg: [
-    {
-      vedleggsId: string;
-      brukerErAvsender: true;
-      erEttersending: false;
-      tittel: string;
-      linkVedlegg: string;
-      tidspunktMottatt: string;
-    },
-  ];
-  manglendeVedlegg: [
-    {
-      vedleggsId: string;
-      brukerErAvsender: true;
-      tittel: string;
-      beskrivelse: null;
-      linkEttersending: string;
-      tidspunktEtterspurt: string;
-    },
-    {
-      vedleggsId: string;
-      brukerErAvsender: true;
-      tittel: string;
-      beskrivelse: null;
-      linkEttersending: string;
-      tidspunktEtterspurt: string;
-    },
-    {
-      vedleggsId: string;
-      brukerErAvsender: true;
-      tittel: string;
-      beskrivelse: null;
-      linkEttersending: string;
-      tidspunktEtterspurt: string;
-    },
-  ];
+  mottatteVedlegg: MotatteVedlegg[];
+  manglendeVedlegg: ManglendeVedlegg[];
   opprettet: string;
 }
 

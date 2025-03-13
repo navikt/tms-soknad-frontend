@@ -1,13 +1,16 @@
 ---
-import type { Language } from '@src/language/language';
-import Innsendt from '../innsendt/Innsendt';
-import Manglende from '../manglende/Manglende';
-import EttersendteVedlegg from '../ettersendt/EttersendteVedlegg';
-import type { SoknadsObject } from './SoknadType';
-import { Heading } from '@navikt/ds-react';
-import styles from './Soknad.module.css';
-import { fetchSoknad } from '@src/utils/server/fetchSoknad';
-import pino from 'pino-http';
+import type { Language } from "@src/language/language";
+import Innsendt from "../innsendt/Innsendt";
+import Manglende from "../manglende/Manglende";
+import EttersendteVedlegg from "../ettersendt/EttersendteVedlegg";
+import type { SoknadsObject } from "./SoknadType";
+import { Heading, Tag } from "@navikt/ds-react";
+import styles from "./Soknad.module.css";
+import { fetchSoknad } from "@src/utils/server/fetchSoknad";
+import pino from "pino-http";
+import { format } from "date-fns";
+import MottatteDokumenter from "../mottatte-dokumenter/MottatteDokumenter.astro";
+import Ingress from "../ingress/Ingress.astro";
 
 const { soknadsId } = Astro.props;
 
@@ -18,12 +21,16 @@ let soknadsFetchError: boolean = false;
 try {
   soknad = await fetchSoknad(Astro.locals.token, soknadsId);
 } catch (error: any) {
-  logger.error('Fetch failed.', error.message);
+  logger.error("Fetch failed.", error.message);
   soknadsFetchError = true;
 }
 
+if (!soknad) {
+  return null;
+}
+
 const ettersendteVedlegg = soknad?.mottatteVedlegg.filter(
-  (vedlegg) => vedlegg.erEttersending,
+  (vedlegg) => vedlegg.erEttersending
 );
 
 const language = Astro.currentLocale as Language;
@@ -32,25 +39,26 @@ const hasManglendeVedlegg = soknad && soknad.manglendeVedlegg.length > 0;
 ---
 
 <div class={styles.container}>
-  <Heading className={styles.heading} level="1" size="large"
-    >{soknad?.tittel}</Heading
-  >
+  <Heading className={styles.heading} level="1" size="large">
+    {soknad?.tittel}
+  </Heading>
+  <Tag className={styles.tag} variant="success">
+    {
+      "Mottatt " +
+        format(new Date(soknad?.tidspunktMottatt), "dd.MM.yyyy 'kl 'HH:mm")
+    }
+  </Tag>
+  <Ingress
+    hasManglendeVedlegg={hasManglendeVedlegg}
+    ettersendingsfrist={soknad.fristEttersending}
+  />
   {
-    soknad?.manglendeVedlegg && hasManglendeVedlegg && (
+    hasManglendeVedlegg && (
       <Manglende
-        client:only="react"
         manglendeVedlegg={soknad?.manglendeVedlegg}
-        ettersendingsfrist={soknad?.fristEttersending}
+        ettersendingsfrist={soknad.fristEttersending}
       />
     )
   }
-  {soknad && <Innsendt client:only="react" soknad={soknad} />}
-  {
-    ettersendteVedlegg && (
-      <EttersendteVedlegg
-        client:only="react"
-        ettersendteVedlegg={ettersendteVedlegg}
-      />
-    )
-  }
+  <MottatteDokumenter />
 </div>
