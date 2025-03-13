@@ -30,10 +30,9 @@ dokumentoversiktSelvbetjening(ident: $ident, tema: $tema) {
     tema {
       navn
       journalposter {
+        journalpostId
         dokumenter {
           tittel
-          journalpostId
-          dato
         }
     }
     }
