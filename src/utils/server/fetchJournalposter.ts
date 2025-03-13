@@ -29,11 +29,13 @@ export const fetchJournalposter = async (token: string, tema: string) => {
 dokumentoversiktSelvbetjening(ident: $ident, tema: $tema) {
     tema {
       navn
-      dokumenter {
-        tittel
-        journalpostId
-        dato
-      }
+      journalposter {
+        dokumenter {
+          tittel
+          journalpostId
+          dato
+        }
+    }
     }
   }
 }`,
