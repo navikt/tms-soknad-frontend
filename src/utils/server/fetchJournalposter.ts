@@ -33,6 +33,7 @@ dokumentoversiktSelvbetjening(ident: $ident, tema: $tema) {
         journalpostId
         dokumenter {
           tittel
+          dokumentInfoId
         }
     }
     }
@@ -60,6 +61,7 @@ dokumentoversiktSelvbetjening(ident: $ident, tema: $tema) {
 
       journalpost.dokumenter?.forEach((dokument: any) => {
         console.log(`Dokument Title: ${dokument.tittel}`);
+        console.log(`Dokument ID: ${dokument.dokumentInfoId}`);
       });
     });
   });
