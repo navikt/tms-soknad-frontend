@@ -51,5 +51,8 @@ dokumentoversiktSelvbetjening(ident: $ident, tema: $tema) {
       console.error('Error fetching from API: ' + error);
     });
 
-  console.log(safResponse);
+  console.log(safResponse.data.dokumentoversiktSelvbetjening.tema);
+  console.log(
+    safResponse.data.dokumentoversiktSelvbetjening.tema.journalposter,
+  );
 };
