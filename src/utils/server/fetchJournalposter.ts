@@ -50,9 +50,17 @@ dokumentoversiktSelvbetjening(ident: $ident, tema: $tema) {
     .catch((error) => {
       console.error('Error fetching from API: ' + error);
     });
-
   console.log(safResponse.data.dokumentoversiktSelvbetjening.tema);
-  console.log(
-    safResponse.data.dokumentoversiktSelvbetjening.tema.journalposter,
-  );
+
+  safResponse.data.dokumentoversiktSelvbetjening.tema.forEach((temaItem) => {
+    console.log(`Tema: ${temaItem.navn}`);
+
+    temaItem.journalposter?.forEach((journalpost: any) => {
+      console.log(`Journalpost ID: ${journalpost.journalpostId}`);
+
+      journalpost.dokumenter?.forEach((dokument: any) => {
+        console.log(`Dokument Title: ${dokument.tittel}`);
+      });
+    });
+  });
 };
