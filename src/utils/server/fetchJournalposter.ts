@@ -2,7 +2,6 @@ import { parseIdportenToken } from '@navikt/oasis';
 import { getOboToken } from './token.ts';
 import { getEnvironment } from './environment.ts';
 import { getSAFUrl } from './urls.ts';
-import type { Soknad } from '@src/components/soknad/SoknadType.ts';
 
 export const fetchJournalposter = async (token: string, tema: string) => {
   const safSelvbetjeningApiAudience =
@@ -34,6 +33,8 @@ dokumentoversiktSelvbetjening(ident: $ident, tema: $tema) {
         dokumenter {
           tittel
           dokumentInfoId
+          variantFormat
+          brukerHarTilgang
         }
     }
     }
@@ -53,16 +54,20 @@ dokumentoversiktSelvbetjening(ident: $ident, tema: $tema) {
     });
   console.log(safResponse.data.dokumentoversiktSelvbetjening.tema);
 
-  safResponse.data.dokumentoversiktSelvbetjening.tema.forEach((temaItem) => {
-    console.log(`Tema: ${temaItem.navn}`);
+  safResponse.data.dokumentoversiktSelvbetjening.tema.forEach(
+    (temaItem: any) => {
+      console.log(`Tema: ${temaItem.navn}`);
 
-    temaItem.journalposter?.forEach((journalpost: any) => {
-      console.log(`Journalpost ID: ${journalpost.journalpostId}`);
+      temaItem.journalposter?.forEach((journalpost: any) => {
+        console.log(`Journalpost ID: ${journalpost.journalpostId}`);
 
-      journalpost.dokumenter?.forEach((dokument: any) => {
-        console.log(`Dokument Title: ${dokument.tittel}`);
-        console.log(`Dokument ID: ${dokument.dokumentInfoId}`);
+        journalpost.dokumenter?.forEach((dokument: any) => {
+          console.log(`Dokument Title: ${dokument.tittel}`);
+          console.log(`Dokument ID: ${dokument.dokumentInfoId}`);
+          console.log(`Dokument Format: ${dokument.variantFormat}`);
+          console.log(`Dokument Access: ${dokument.brukerHarTilgang}`);
+        });
       });
-    });
-  });
+    },
+  );
 };
