@@ -33,8 +33,6 @@ dokumentoversiktSelvbetjening(ident: $ident, tema: $tema) {
         dokumenter {
           tittel
           dokumentInfoId
-          variantFormat
-          brukerHarTilgang
         }
     }
     }
@@ -64,8 +62,8 @@ dokumentoversiktSelvbetjening(ident: $ident, tema: $tema) {
         journalpost.dokumenter?.forEach((dokument: any) => {
           console.log(`Dokument Title: ${dokument.tittel}`);
           console.log(`Dokument ID: ${dokument.dokumentInfoId}`);
-          console.log(`Dokument Format: ${dokument.variantFormat}`);
-          console.log(`Dokument Access: ${dokument.brukerHarTilgang}`);
+          //console.log(`Dokument Format: ${dokument.variantFormat}`);
+          //console.log(`Dokument Access: ${dokument.brukerHarTilgang}`);
         });
       });
     },
